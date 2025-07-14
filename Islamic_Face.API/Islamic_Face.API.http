@@ -1,0 +1,6 @@
+@Islamic_Face.API_HostAddress = http://localhost:5057
+
+GET {{Islamic_Face.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

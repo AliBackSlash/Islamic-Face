@@ -10,6 +10,10 @@ namespace Islamic_Face_Data_Access.context
 {
     public class AppDbContext : DbContext
     {
+        public AppDbContext(DbContextOptions options) : base(options)
+        {
+        }
+
         public DbSet<Country> Countries { get; set; }
         public DbSet<FriendRequest> FriendRequests { get; set; }
         public DbSet<Post> Posts { get; set; }
@@ -22,15 +26,15 @@ namespace Islamic_Face_Data_Access.context
         public DbSet<UserSetting> UserSettings { get; set; }
 
 
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
-        {
-            base.OnConfiguring(options);
+        //protected override void OnConfiguring(DbContextOptionsBuilder options)
+        //{
+        //    base.OnConfiguring(options);
 
-            options.UseSqlServer(new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json").Build().
-                GetSection("ConnectionStrings").Value);
+        //    options.UseSqlServer(new ConfigurationBuilder()
+        //        .AddJsonFile("appsettings.json").Build().
+        //        GetSection("ConnectionStrings").Value);
                 
-        }
+        //}
 
         protected override void OnModelCreating(ModelBuilder Builder)
         {

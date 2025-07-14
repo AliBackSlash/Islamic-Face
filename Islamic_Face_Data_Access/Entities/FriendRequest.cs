@@ -11,7 +11,7 @@ namespace Islamic_Face_Data_Access.Entities
         public DateTime? ResponseAt { get; set; }
         public DateTime DateSend { get; internal set; }
 
-        //public User? Sender { get; set; }  
-        //public User? Receiver { get; set; }
+        public User? Sender { get; set; }  
+        public User? Receiver { get; set; }
     }
 }

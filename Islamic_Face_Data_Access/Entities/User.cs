@@ -27,8 +27,9 @@ namespace Islamic_Face_Data_Access.Entities
         public byte settingId { get; set; }
 
         public Country? Country { get; set; }
-        //public FriendRequest? friendRequest { get; set; }
-        //public ICollection<FriendRequest>  FriendRequests { get; set; } = new List<FriendRequest>();
+        public ICollection<FriendRequest>  senderRequests { get; set; } = new List<FriendRequest>();
+        
+        public ICollection<FriendRequest>  RecoversRequests { get; set; } = new List<FriendRequest>();
         
         public ICollection<PostReaction> PostReactions { get; set; } = new List<PostReaction>();
         public ICollection<PostComment> Comments { get; set; } = new List<PostComment>();

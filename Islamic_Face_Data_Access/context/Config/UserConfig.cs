@@ -77,17 +77,17 @@ namespace Islamic_Face_Data_Access.context.Config
 
             //One         to Many
             //User.Sender => FriendRequests
-            /*//builder.HasMany(x => x.SendRequests)
-            //     .WithOne(x => x.Sender)
-            //     .HasForeignKey(x => x.senderID)
-            //     .OnDelete(DeleteBehavior.Cascade);
+            builder.HasMany(x => x.senderRequests)
+                 .WithOne(x => x.Sender)
+                 .HasForeignKey(x => x.senderID)
+                 .OnDelete(DeleteBehavior.NoAction);
 
             ////One           to Many
-            ////User.Receiver => FriendRequests
-            //builder.HasMany(x => x.ReceiverRequests)
-            //     .WithOne(x => x.Receiver)
-            //     .HasForeignKey(x => x.ReceiverID)
-            //     .OnDelete(DeleteBehavior.Cascade);*/
+            //User.Receiver => FriendRequests
+            builder.HasMany(x => x.RecoversRequests)
+                 .WithOne(x => x.Receiver)
+                 .HasForeignKey(x => x.ReceiverID)
+                 .OnDelete(DeleteBehavior.NoAction);
 
 
 
