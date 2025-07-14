@@ -9,6 +9,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Islamic_Face_Business_Acces
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Islamic_Face.API", "Islamic_Face.API\Islamic_Face.API.csproj", "{C9B42395-52D5-48B8-97C2-5FB3FE1CC654}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BLL", "BLL", "{90779D3A-70D7-4FCD-8E40-E9A0F1BE91F3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DAL", "DAL", "{F7C16B07-5E17-4198-BED2-ED68235EB474}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +36,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{09905306-617F-4F5D-A33B-588059DE6C2D} = {F7C16B07-5E17-4198-BED2-ED68235EB474}
+		{BB260F6E-016E-4CA2-857D-34B4B72FDE84} = {90779D3A-70D7-4FCD-8E40-E9A0F1BE91F3}
+		{C9B42395-52D5-48B8-97C2-5FB3FE1CC654} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7ECDACA4-2025-4C65-8179-10757AD6195D}
