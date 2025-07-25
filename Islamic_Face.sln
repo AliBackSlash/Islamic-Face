@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36119.2
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IslamicFace.Infrastructure", "Islamic_Face_Data_Access\IslamicFace.Infrastructure.csproj", "{09905306-617F-4F5D-A33B-588059DE6C2D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IslamicFace.Presentation.API", "Islamic_Face.API\IslamicFace.Presentation.API.csproj", "{C9B42395-52D5-48B8-97C2-5FB3FE1CC654}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1139C8EB-EC26-4DF9-9B9F-D5A74C0E00EE}"
@@ -13,16 +11,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IslamicFace.Domain", "Islam
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IslamicFace.Application", "IslamicFace.Application\IslamicFace.Application.csproj", "{A9C900BA-13E6-48DC-B2F9-4BF60A9F267B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IslamicFace.Infrastructure", "IslamicFace.Infrastructure\IslamicFace.Infrastructure.csproj", "{5206552F-2724-435A-871F-8605D8D2B650}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{09905306-617F-4F5D-A33B-588059DE6C2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{09905306-617F-4F5D-A33B-588059DE6C2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{09905306-617F-4F5D-A33B-588059DE6C2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{09905306-617F-4F5D-A33B-588059DE6C2D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C9B42395-52D5-48B8-97C2-5FB3FE1CC654}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C9B42395-52D5-48B8-97C2-5FB3FE1CC654}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9B42395-52D5-48B8-97C2-5FB3FE1CC654}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -35,15 +31,19 @@ Global
 		{A9C900BA-13E6-48DC-B2F9-4BF60A9F267B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9C900BA-13E6-48DC-B2F9-4BF60A9F267B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9C900BA-13E6-48DC-B2F9-4BF60A9F267B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5206552F-2724-435A-871F-8605D8D2B650}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5206552F-2724-435A-871F-8605D8D2B650}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5206552F-2724-435A-871F-8605D8D2B650}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5206552F-2724-435A-871F-8605D8D2B650}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{09905306-617F-4F5D-A33B-588059DE6C2D} = {1139C8EB-EC26-4DF9-9B9F-D5A74C0E00EE}
 		{C9B42395-52D5-48B8-97C2-5FB3FE1CC654} = {1139C8EB-EC26-4DF9-9B9F-D5A74C0E00EE}
 		{B6A1324D-09B4-463B-B823-636790AE70D7} = {1139C8EB-EC26-4DF9-9B9F-D5A74C0E00EE}
 		{A9C900BA-13E6-48DC-B2F9-4BF60A9F267B} = {1139C8EB-EC26-4DF9-9B9F-D5A74C0E00EE}
+		{5206552F-2724-435A-871F-8605D8D2B650} = {1139C8EB-EC26-4DF9-9B9F-D5A74C0E00EE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7ECDACA4-2025-4C65-8179-10757AD6195D}

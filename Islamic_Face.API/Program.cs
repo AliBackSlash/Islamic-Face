@@ -1,4 +1,4 @@
-using IslamicFace.Infrastructure.EFCore.context;
+using IslamicFace.Infrastructure.context;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
