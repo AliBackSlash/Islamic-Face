@@ -18,7 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\IslamicFace.Application\IslamicFace.Application.csproj" />
-    <ProjectReference Include="..\Islamic_Face_Data_Access\IslamicFace.Infrastructure.csproj" />
+    <ProjectReference Include="..\IslamicFace.Infrastructure\IslamicFace.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
