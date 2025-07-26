@@ -10,18 +10,18 @@ namespace IslamicFace.Domain.Entities
     public class User
     {
 
-        public int Id { get; set; }
-        public string? name { get; set; }
-        public string? email { get; set; }
-        public string? password { get; set; }
-        public string? userName { get; set; }
-        public int countryID { get; set; }
-        public string? city { get; set; }
+        public Guid Id { get; set; }
+        public required string name { get; set; }
+        public required string email { get; set; }
+        public required string password { get; set; }
+        public required string userName { get; set; }
+        public short countryID { get; set; }
+        public short cityID { get; set; }
         public DateOnly dateOfBirth { get; set; }
         public DateTime joinDate { get; set; }
         public bool gender { get; set; }
-        public string? profilePictureURL { get; set; }
-        public string? bio {  get; set; }
+        public required string profilePictureURL { get; set; }
+        public required string bio {  get; set; }
         public UserTypes userType { get; set; }
 
         public byte settingId { get; set; }

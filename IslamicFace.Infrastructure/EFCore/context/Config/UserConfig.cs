@@ -10,12 +10,11 @@ namespace IslamicFace.Infrastructure.context.Config
         public void Configure(EntityTypeBuilder<User> builder)
         {
             builder.ToTable("Users");
-            builder.HasKey(x => x.Id).HasAnnotation("SqlServer:Identity", "1, 1");
+            builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Id)
-                   .HasColumnType("BigInt")
-                   .IsRequired();
-
+                  .HasColumnType("UNIQUEIDENTIFIER")
+                  .IsRequired();
             builder.Property(x => x.userName)
                 .HasColumnType("VARCHAR") 
                 .HasMaxLength(12)
@@ -41,9 +40,8 @@ namespace IslamicFace.Infrastructure.context.Config
                 .HasMaxLength(254)
                 .IsRequired();
 
-            builder.Property(x => x.city)
-                .HasColumnType("VARCHAR")
-                .HasMaxLength(100)
+            builder.Property(x => x.cityID)
+                .HasColumnType("Int")
                 .IsRequired();
 
             builder.Property(x => x.bio)

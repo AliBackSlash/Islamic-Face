@@ -19,4 +19,9 @@
     <ProjectReference Include="..\IslamicFace.Domain\IslamicFace.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\AiContentModerationServices\" />
+    <Folder Include="Services\EmailServices\" />
+  </ItemGroup>
+
 </Project>

@@ -3,72 +3,16 @@
   "WorkspaceRootPath": "D:\\04-GitHub Repos\\Islamic-Face\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B6A1324D-09B4-463B-B823-636790AE70D7}|IslamicFace.Domain\\IslamicFace.Domain.csproj|d:\\04-github repos\\islamic-face\\islamicface.domain\\abstractions\\irepositories\\iusersettingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B6A1324D-09B4-463B-B823-636790AE70D7}|IslamicFace.Domain\\IslamicFace.Domain.csproj|solutionrelative:islamicface.domain\\abstractions\\irepositories\\iusersettingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5206552F-2724-435A-871F-8605D8D2B650}|IslamicFace.Infrastructure\\IslamicFace.Infrastructure.csproj|d:\\04-github repos\\islamic-face\\islamicface.infrastructure\\migrations\\20250726131354_mergedofallmigrations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5206552F-2724-435A-871F-8605D8D2B650}|IslamicFace.Infrastructure\\IslamicFace.Infrastructure.csproj|solutionrelative:islamicface.infrastructure\\migrations\\20250726131354_mergedofallmigrations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6A1324D-09B4-463B-B823-636790AE70D7}|IslamicFace.Domain\\IslamicFace.Domain.csproj|d:\\04-github repos\\islamic-face\\islamicface.domain\\entities\\usersetting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B6A1324D-09B4-463B-B823-636790AE70D7}|IslamicFace.Domain\\IslamicFace.Domain.csproj|solutionrelative:islamicface.domain\\entities\\usersetting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C9B42395-52D5-48B8-97C2-5FB3FE1CC654}|Islamic_Face.API\\IslamicFace.Presentation.API.csproj|d:\\04-github repos\\islamic-face\\islamic_face.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{C9B42395-52D5-48B8-97C2-5FB3FE1CC654}|Islamic_Face.API\\IslamicFace.Presentation.API.csproj|solutionrelative:islamic_face.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6A1324D-09B4-463B-B823-636790AE70D7}|IslamicFace.Domain\\IslamicFace.Domain.csproj|d:\\04-github repos\\islamic-face\\islamicface.domain\\abstractions\\irepositories\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B6A1324D-09B4-463B-B823-636790AE70D7}|IslamicFace.Domain\\IslamicFace.Domain.csproj|solutionrelative:islamicface.domain\\abstractions\\irepositories\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B6A1324D-09B4-463B-B823-636790AE70D7}|IslamicFace.Domain\\IslamicFace.Domain.csproj|d:\\04-github repos\\islamic-face\\islamicface.domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B6A1324D-09B4-463B-B823-636790AE70D7}|IslamicFace.Domain\\IslamicFace.Domain.csproj|solutionrelative:islamicface.domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B6A1324D-09B4-463B-B823-636790AE70D7}|IslamicFace.Domain\\IslamicFace.Domain.csproj|d:\\04-github repos\\islamic-face\\islamicface.domain\\abstractions\\irepositories\\ireactionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B6A1324D-09B4-463B-B823-636790AE70D7}|IslamicFace.Domain\\IslamicFace.Domain.csproj|solutionrelative:islamicface.domain\\abstractions\\irepositories\\ireactionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B6A1324D-09B4-463B-B823-636790AE70D7}|IslamicFace.Domain\\IslamicFace.Domain.csproj|d:\\04-github repos\\islamic-face\\islamicface.domain\\abstractions\\irepositories\\iposttagrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B6A1324D-09B4-463B-B823-636790AE70D7}|IslamicFace.Domain\\IslamicFace.Domain.csproj|solutionrelative:islamicface.domain\\abstractions\\irepositories\\iposttagrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B6A1324D-09B4-463B-B823-636790AE70D7}|IslamicFace.Domain\\IslamicFace.Domain.csproj|d:\\04-github repos\\islamic-face\\islamicface.domain\\entities\\posttag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B6A1324D-09B4-463B-B823-636790AE70D7}|IslamicFace.Domain\\IslamicFace.Domain.csproj|solutionrelative:islamicface.domain\\entities\\posttag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B6A1324D-09B4-463B-B823-636790AE70D7}|IslamicFace.Domain\\IslamicFace.Domain.csproj|d:\\04-github repos\\islamic-face\\islamicface.domain\\abstractions\\irepositories\\ipostrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B6A1324D-09B4-463B-B823-636790AE70D7}|IslamicFace.Domain\\IslamicFace.Domain.csproj|solutionrelative:islamicface.domain\\abstractions\\irepositories\\ipostrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B6A1324D-09B4-463B-B823-636790AE70D7}|IslamicFace.Domain\\IslamicFace.Domain.csproj|d:\\04-github repos\\islamic-face\\islamicface.domain\\abstractions\\irepositories\\ipostmediarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B6A1324D-09B4-463B-B823-636790AE70D7}|IslamicFace.Domain\\IslamicFace.Domain.csproj|solutionrelative:islamicface.domain\\abstractions\\irepositories\\ipostmediarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B6A1324D-09B4-463B-B823-636790AE70D7}|IslamicFace.Domain\\IslamicFace.Domain.csproj|d:\\04-github repos\\islamic-face\\islamicface.domain\\entities\\postreaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B6A1324D-09B4-463B-B823-636790AE70D7}|IslamicFace.Domain\\IslamicFace.Domain.csproj|solutionrelative:islamicface.domain\\entities\\postreaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B6A1324D-09B4-463B-B823-636790AE70D7}|IslamicFace.Domain\\IslamicFace.Domain.csproj|d:\\04-github repos\\islamic-face\\islamicface.domain\\abstractions\\irepositories\\ipostcommentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B6A1324D-09B4-463B-B823-636790AE70D7}|IslamicFace.Domain\\IslamicFace.Domain.csproj|solutionrelative:islamicface.domain\\abstractions\\irepositories\\ipostcommentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B6A1324D-09B4-463B-B823-636790AE70D7}|IslamicFace.Domain\\IslamicFace.Domain.csproj|d:\\04-github repos\\islamic-face\\islamicface.domain\\entities\\postmedia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B6A1324D-09B4-463B-B823-636790AE70D7}|IslamicFace.Domain\\IslamicFace.Domain.csproj|solutionrelative:islamicface.domain\\entities\\postmedia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B6A1324D-09B4-463B-B823-636790AE70D7}|IslamicFace.Domain\\IslamicFace.Domain.csproj|d:\\04-github repos\\islamic-face\\islamicface.domain\\abstractions\\irepositories\\ifriendrequestrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B6A1324D-09B4-463B-B823-636790AE70D7}|IslamicFace.Domain\\IslamicFace.Domain.csproj|solutionrelative:islamicface.domain\\abstractions\\irepositories\\ifriendrequestrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B6A1324D-09B4-463B-B823-636790AE70D7}|IslamicFace.Domain\\IslamicFace.Domain.csproj|d:\\04-github repos\\islamic-face\\islamicface.domain\\abstractions\\irepositories\\icountryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B6A1324D-09B4-463B-B823-636790AE70D7}|IslamicFace.Domain\\IslamicFace.Domain.csproj|solutionrelative:islamicface.domain\\abstractions\\irepositories\\icountryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B6A1324D-09B4-463B-B823-636790AE70D7}|IslamicFace.Domain\\IslamicFace.Domain.csproj|d:\\04-github repos\\islamic-face\\islamicface.domain\\abstractions\\irepositories\\ibasrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B6A1324D-09B4-463B-B823-636790AE70D7}|IslamicFace.Domain\\IslamicFace.Domain.csproj|solutionrelative:islamicface.domain\\abstractions\\irepositories\\ibasrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B6A1324D-09B4-463B-B823-636790AE70D7}|IslamicFace.Domain\\IslamicFace.Domain.csproj|d:\\04-github repos\\islamic-face\\islamicface.domain\\globalusing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B6A1324D-09B4-463B-B823-636790AE70D7}|IslamicFace.Domain\\IslamicFace.Domain.csproj|solutionrelative:islamicface.domain\\globalusing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5206552F-2724-435A-871F-8605D8D2B650}|IslamicFace.Infrastructure\\IslamicFace.Infrastructure.csproj|d:\\04-github repos\\islamic-face\\islamicface.infrastructure\\efcore\\repositories\\basrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5206552F-2724-435A-871F-8605D8D2B650}|IslamicFace.Infrastructure\\IslamicFace.Infrastructure.csproj|solutionrelative:islamicface.infrastructure\\efcore\\repositories\\basrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5206552F-2724-435A-871F-8605D8D2B650}|IslamicFace.Infrastructure\\IslamicFace.Infrastructure.csproj|d:\\04-github repos\\islamic-face\\islamicface.infrastructure\\efcore\\context\\config\\usersettingconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5206552F-2724-435A-871F-8605D8D2B650}|IslamicFace.Infrastructure\\IslamicFace.Infrastructure.csproj|solutionrelative:islamicface.infrastructure\\efcore\\context\\config\\usersettingconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -115,222 +59,40 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "UserSetting.cs",
-              "DocumentMoniker": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Domain\\Entities\\UserSetting.cs",
-              "RelativeDocumentMoniker": "IslamicFace.Domain\\Entities\\UserSetting.cs",
-              "ToolTip": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Domain\\Entities\\UserSetting.cs",
-              "RelativeToolTip": "IslamicFace.Domain\\Entities\\UserSetting.cs",
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\04-GitHub Repos\\Islamic-Face\\Islamic_Face.API\\appsettings.json",
+              "RelativeDocumentMoniker": "Islamic_Face.API\\appsettings.json",
+              "ToolTip": "D:\\04-GitHub Repos\\Islamic-Face\\Islamic_Face.API\\appsettings.json",
+              "RelativeToolTip": "Islamic_Face.API\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-25T15:42:22.019Z",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-07-26T13:15:05.738Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "IUserSettingRepository.cs",
-              "DocumentMoniker": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Domain\\Abstractions\\IRepositories\\IUserSettingRepository.cs",
-              "RelativeDocumentMoniker": "IslamicFace.Domain\\Abstractions\\IRepositories\\IUserSettingRepository.cs",
-              "ToolTip": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Domain\\Abstractions\\IRepositories\\IUserSettingRepository.cs",
-              "RelativeToolTip": "IslamicFace.Domain\\Abstractions\\IRepositories\\IUserSettingRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAABMAAAAAAAAAA==",
+              "Title": "20250726131354_MergedOfAllMigrations.cs",
+              "DocumentMoniker": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Infrastructure\\Migrations\\20250726131354_MergedOfAllMigrations.cs",
+              "RelativeDocumentMoniker": "IslamicFace.Infrastructure\\Migrations\\20250726131354_MergedOfAllMigrations.cs",
+              "ToolTip": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Infrastructure\\Migrations\\20250726131354_MergedOfAllMigrations.cs*",
+              "RelativeToolTip": "IslamicFace.Infrastructure\\Migrations\\20250726131354_MergedOfAllMigrations.cs*",
+              "ViewState": "AgIAANUAAAAAAAAAAAAEwO4AAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-25T15:42:16.373Z",
+              "WhenOpened": "2025-07-26T13:13:54.506Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "IUserRepository.cs",
-              "DocumentMoniker": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Domain\\Abstractions\\IRepositories\\IUserRepository.cs",
-              "RelativeDocumentMoniker": "IslamicFace.Domain\\Abstractions\\IRepositories\\IUserRepository.cs",
-              "ToolTip": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Domain\\Abstractions\\IRepositories\\IUserRepository.cs",
-              "RelativeToolTip": "IslamicFace.Domain\\Abstractions\\IRepositories\\IUserRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Title": "UserSettingConfig.cs",
+              "DocumentMoniker": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Infrastructure\\EFCore\\context\\Config\\UserSettingConfig.cs",
+              "RelativeDocumentMoniker": "IslamicFace.Infrastructure\\EFCore\\context\\Config\\UserSettingConfig.cs",
+              "ToolTip": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Infrastructure\\EFCore\\context\\Config\\UserSettingConfig.cs",
+              "RelativeToolTip": "IslamicFace.Infrastructure\\EFCore\\context\\Config\\UserSettingConfig.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-25T15:41:48.044Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "User.cs",
-              "DocumentMoniker": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Domain\\Entities\\User.cs",
-              "RelativeDocumentMoniker": "IslamicFace.Domain\\Entities\\User.cs",
-              "ToolTip": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Domain\\Entities\\User.cs",
-              "RelativeToolTip": "IslamicFace.Domain\\Entities\\User.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-25T15:41:29.325Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "IReactionRepository.cs",
-              "DocumentMoniker": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Domain\\Abstractions\\IRepositories\\IReactionRepository.cs",
-              "RelativeDocumentMoniker": "IslamicFace.Domain\\Abstractions\\IRepositories\\IReactionRepository.cs",
-              "ToolTip": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Domain\\Abstractions\\IRepositories\\IReactionRepository.cs",
-              "RelativeToolTip": "IslamicFace.Domain\\Abstractions\\IRepositories\\IReactionRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAABFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-25T15:40:41.301Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "PostTag.cs",
-              "DocumentMoniker": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Domain\\Entities\\PostTag.cs",
-              "RelativeDocumentMoniker": "IslamicFace.Domain\\Entities\\PostTag.cs",
-              "ToolTip": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Domain\\Entities\\PostTag.cs",
-              "RelativeToolTip": "IslamicFace.Domain\\Entities\\PostTag.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-25T15:39:35.845Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "IPostTagRepository.cs",
-              "DocumentMoniker": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Domain\\Abstractions\\IRepositories\\IPostTagRepository.cs",
-              "RelativeDocumentMoniker": "IslamicFace.Domain\\Abstractions\\IRepositories\\IPostTagRepository.cs",
-              "ToolTip": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Domain\\Abstractions\\IRepositories\\IPostTagRepository.cs",
-              "RelativeToolTip": "IslamicFace.Domain\\Abstractions\\IRepositories\\IPostTagRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-25T15:39:32.941Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "IPostRepository.cs",
-              "DocumentMoniker": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Domain\\Abstractions\\IRepositories\\IPostRepository.cs",
-              "RelativeDocumentMoniker": "IslamicFace.Domain\\Abstractions\\IRepositories\\IPostRepository.cs",
-              "ToolTip": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Domain\\Abstractions\\IRepositories\\IPostRepository.cs",
-              "RelativeToolTip": "IslamicFace.Domain\\Abstractions\\IRepositories\\IPostRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-25T15:39:06.503Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "PostReaction.cs",
-              "DocumentMoniker": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Domain\\Entities\\PostReaction.cs",
-              "RelativeDocumentMoniker": "IslamicFace.Domain\\Entities\\PostReaction.cs",
-              "ToolTip": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Domain\\Entities\\PostReaction.cs",
-              "RelativeToolTip": "IslamicFace.Domain\\Entities\\PostReaction.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-25T15:38:24.286Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "PostMedia.cs",
-              "DocumentMoniker": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Domain\\Entities\\PostMedia.cs",
-              "RelativeDocumentMoniker": "IslamicFace.Domain\\Entities\\PostMedia.cs",
-              "ToolTip": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Domain\\Entities\\PostMedia.cs",
-              "RelativeToolTip": "IslamicFace.Domain\\Entities\\PostMedia.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-25T15:35:25.788Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "IPostMediaRepository.cs",
-              "DocumentMoniker": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Domain\\Abstractions\\IRepositories\\IPostMediaRepository.cs",
-              "RelativeDocumentMoniker": "IslamicFace.Domain\\Abstractions\\IRepositories\\IPostMediaRepository.cs",
-              "ToolTip": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Domain\\Abstractions\\IRepositories\\IPostMediaRepository.cs",
-              "RelativeToolTip": "IslamicFace.Domain\\Abstractions\\IRepositories\\IPostMediaRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-25T15:34:34.102Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "globalUsing.cs",
-              "DocumentMoniker": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Domain\\globalUsing.cs",
-              "RelativeDocumentMoniker": "IslamicFace.Domain\\globalUsing.cs",
-              "ToolTip": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Domain\\globalUsing.cs",
-              "RelativeToolTip": "IslamicFace.Domain\\globalUsing.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-25T15:33:26.039Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "IPostCommentRepository.cs",
-              "DocumentMoniker": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Domain\\Abstractions\\IRepositories\\IPostCommentRepository.cs",
-              "RelativeDocumentMoniker": "IslamicFace.Domain\\Abstractions\\IRepositories\\IPostCommentRepository.cs",
-              "ToolTip": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Domain\\Abstractions\\IRepositories\\IPostCommentRepository.cs",
-              "RelativeToolTip": "IslamicFace.Domain\\Abstractions\\IRepositories\\IPostCommentRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-25T15:32:33.903Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "IFriendRequestRepository.cs",
-              "DocumentMoniker": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Domain\\Abstractions\\IRepositories\\IFriendRequestRepository.cs",
-              "RelativeDocumentMoniker": "IslamicFace.Domain\\Abstractions\\IRepositories\\IFriendRequestRepository.cs",
-              "ToolTip": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Domain\\Abstractions\\IRepositories\\IFriendRequestRepository.cs",
-              "RelativeToolTip": "IslamicFace.Domain\\Abstractions\\IRepositories\\IFriendRequestRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-25T15:31:59.036Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "ICountryRepository.cs",
-              "DocumentMoniker": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Domain\\Abstractions\\IRepositories\\ICountryRepository.cs",
-              "RelativeDocumentMoniker": "IslamicFace.Domain\\Abstractions\\IRepositories\\ICountryRepository.cs",
-              "ToolTip": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Domain\\Abstractions\\IRepositories\\ICountryRepository.cs",
-              "RelativeToolTip": "IslamicFace.Domain\\Abstractions\\IRepositories\\ICountryRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-25T15:31:26.007Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "IBasRepository.cs",
-              "DocumentMoniker": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Domain\\Abstractions\\IRepositories\\IBasRepository.cs",
-              "RelativeDocumentMoniker": "IslamicFace.Domain\\Abstractions\\IRepositories\\IBasRepository.cs",
-              "ToolTip": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Domain\\Abstractions\\IRepositories\\IBasRepository.cs",
-              "RelativeToolTip": "IslamicFace.Domain\\Abstractions\\IRepositories\\IBasRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-25T15:22:00.429Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "BasRepository.cs",
-              "DocumentMoniker": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Infrastructure\\EFCore\\Repositories\\BasRepository.cs",
-              "RelativeDocumentMoniker": "IslamicFace.Infrastructure\\EFCore\\Repositories\\BasRepository.cs",
-              "ToolTip": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Infrastructure\\EFCore\\Repositories\\BasRepository.cs",
-              "RelativeToolTip": "IslamicFace.Infrastructure\\EFCore\\Repositories\\BasRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC8AAAA+AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-25T15:06:00.829Z",
+              "WhenOpened": "2025-07-26T13:13:28.143Z",
               "EditorCaption": ""
             }
           ]

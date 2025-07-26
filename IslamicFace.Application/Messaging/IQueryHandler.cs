@@ -1,6 +1,6 @@
 ﻿using MediatR;
-using IslamicFace.Domain;
-using IslamicFace.Domain.ErrorHandleClasses;
+using IslamicFace.Application;
+using IslamicFace.Application.ErrorHandleClasses;
 namespace IslamicFace.Application.Messaging;
 
 public interface IQueryHandler<in TQuery, TResponse> : IRequestHandler<TQuery, Result<TResponse>>

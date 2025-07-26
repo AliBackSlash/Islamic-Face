@@ -5,8 +5,8 @@ namespace IslamicFace.Domain.Entities
     public class FriendRequest
     {
         public decimal Id { get; set; }
-        public int senderID { get; set; }
-        public int ReceiverID { get; set; }
+        public Guid senderID { get; set; }
+        public Guid ReceiverID { get; set; }
         public RequestStatus RequestStatus { get; set; }
         public DateTime? ResponseAt { get; set; }
         public DateTime DateSend { get; internal set; }

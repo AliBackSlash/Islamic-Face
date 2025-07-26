@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using IslamicFace.Domain.ErrorHandleClasses;
+using IslamicFace.Application.ErrorHandleClasses;
 
 
 namespace IslamicFace.Application.Messaging;

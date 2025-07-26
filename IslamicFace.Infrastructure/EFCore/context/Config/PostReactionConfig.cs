@@ -14,8 +14,8 @@ namespace IslamicFace.Infrastructure.context.Config
 
 
             builder.Property(x => x.userId)
-              .HasColumnType("BigInt")
-              .IsRequired();
+              .HasColumnType("UNIQUEIDENTIFIER")
+                  .IsRequired();
 
             builder.Property(x => x.postId)
               .HasColumnType("BigInt")

@@ -23,12 +23,12 @@ namespace IslamicFace.Infrastructure.context.Config
                 
 
             builder.Property(x => x.senderID)
-                .HasColumnType("BigInt")               
-                .IsRequired();
+              .HasColumnType("UNIQUEIDENTIFIER")
+                  .IsRequired();
            
             builder.Property(x => x.ReceiverID)
-                .HasColumnType("BigInt")               
-                .IsRequired();
+               .HasColumnType("UNIQUEIDENTIFIER")
+                  .IsRequired();
 
             builder.Property(x => x.RequestStatus)
                .HasColumnType("TinyInt")

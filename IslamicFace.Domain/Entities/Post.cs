@@ -4,7 +4,7 @@
     {
         public decimal Id { get; set; }
         public string? postText { get; set; }
-        public int userId { get; set; }
+        public Guid userId { get; set; }
         public DateTime createdAt { get; set; }
 
 

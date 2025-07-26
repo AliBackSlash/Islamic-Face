@@ -23,6 +23,12 @@ namespace IslamicFace.Infrastructure.context.Config
                     x => (GenderOfFriends)Enum.Parse(typeof(GenderOfFriends), x)
                );
 
+            builder.HasData(
+                new UserSetting { Id = 1, GenderOfFriends = GenderOfFriends.Male},
+                new UserSetting { Id = 2, GenderOfFriends = GenderOfFriends.Female},
+                new UserSetting { Id = 3, GenderOfFriends = GenderOfFriends.Both}
+                );
+
         }
     }
 }

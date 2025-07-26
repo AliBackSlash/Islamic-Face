@@ -22,8 +22,8 @@ namespace IslamicFace.Infrastructure.context.Config
                 .IsRequired();
            
             builder.Property(x => x.userId)
-                .HasColumnType("BigInt")
-                .IsRequired();
+                .HasColumnType("UNIQUEIDENTIFIER")
+                  .IsRequired();
 
             builder.Property(x => x.createdAt)
                 .HasColumnType("DateTime")
