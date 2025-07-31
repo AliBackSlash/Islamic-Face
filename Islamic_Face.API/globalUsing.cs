@@ -4,3 +4,7 @@ global using IslamicFace.Presentation.API.DependencyInjections;
 global using Microsoft.EntityFrameworkCore;
 global using IslamicFace.Domain.Abstractions.IRepositories;
 global using IslamicFace.Infrastructure.EFCore.Repositories;
+global using Microsoft.AspNetCore.Mvc;
+global using IslamicFace.Domain.JWT;
+global using Microsoft.AspNetCore.Identity;
+global using IslamicFace.Infrastructure.EFCore.IdentityUser;

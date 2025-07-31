@@ -1,4 +1,6 @@
-﻿namespace IslamicFace.Application.ErrorHandleClasses;
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace IslamicFace.Domain.ErrorHandleClasses;
 
 public class Result<TValue> : Result
 {

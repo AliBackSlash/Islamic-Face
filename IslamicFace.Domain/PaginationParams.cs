@@ -1,4 +1,4 @@
-﻿namespace IslamicFace.Domain.Abstractions.IRepositories;
+﻿namespace IslamicFace.Domain;
 
 public class PaginationParams
 {

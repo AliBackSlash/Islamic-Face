@@ -1,4 +1,5 @@
-﻿namespace IslamicFace.Domain.Abstractions.IRepositories;
+﻿
+namespace IslamicFace.Domain.Abstractions.IRepositories;
 
 public interface IBasRepository<TEntity, IdType> where TEntity : class
 {
@@ -7,7 +8,7 @@ public interface IBasRepository<TEntity, IdType> where TEntity : class
     Task AddAsync(TEntity entity);
     void Update(TEntity entity);
     void Delete(TEntity entity);
-    Task<int> SaveChangesAsync();
+    Task<Result<int>> SaveChangesAsync();
     Task<PagedResult<TEntity>> GetPagedAsync(
     IQueryable<TEntity> query, PaginationParams paginationParams, CancellationToken cancellationToken = default);
 }

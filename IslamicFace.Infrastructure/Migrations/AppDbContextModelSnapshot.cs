@@ -1812,8 +1812,10 @@ namespace IslamicFace.Infrastructure.Migrations
 
             modelBuilder.Entity("IslamicFace.Domain.Entities.Post", b =>
                 {
-                    b.Property<long>("Id")
-                        .HasColumnType("BigInt");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("UNIQUEIDENTIFIER")
+                        .HasDefaultValueSql("NEWID()");
 
                     b.Property<DateTime>("createdAt")
                         .ValueGeneratedOnAdd()
@@ -1828,8 +1830,7 @@ namespace IslamicFace.Infrastructure.Migrations
                     b.Property<Guid>("userId")
                         .HasColumnType("UNIQUEIDENTIFIER");
 
-                    b.HasKey("Id")
-                        .HasAnnotation("SqlServer:Identity", "1, 1");
+                    b.HasKey("Id");
 
                     b.HasIndex("userId");
 
@@ -1856,8 +1857,8 @@ namespace IslamicFace.Infrastructure.Migrations
                         .HasColumnType("DateTime")
                         .HasDefaultValueSql("GETDATE()");
 
-                    b.Property<long>("postId")
-                        .HasColumnType("BigInt");
+                    b.Property<Guid>("postId")
+                        .HasColumnType("UNIQUEIDENTIFIER");
 
                     b.Property<int>("reactLikeCount")
                         .HasColumnType("int");
@@ -1890,8 +1891,8 @@ namespace IslamicFace.Infrastructure.Migrations
                         .HasMaxLength(2083)
                         .HasColumnType("VARCHAR");
 
-                    b.Property<long>("postId")
-                        .HasColumnType("BigInt");
+                    b.Property<Guid>("postId")
+                        .HasColumnType("UNIQUEIDENTIFIER");
 
                     b.HasKey("Id")
                         .HasAnnotation("SqlServer:Identity", "1, 1");
@@ -1906,8 +1907,8 @@ namespace IslamicFace.Infrastructure.Migrations
                     b.Property<Guid>("userId")
                         .HasColumnType("UNIQUEIDENTIFIER");
 
-                    b.Property<long>("postId")
-                        .HasColumnType("BigInt");
+                    b.Property<Guid>("postId")
+                        .HasColumnType("UNIQUEIDENTIFIER");
 
                     b.Property<byte>("reactTypeID")
                         .HasColumnType("TinyInt");
@@ -1927,8 +1928,8 @@ namespace IslamicFace.Infrastructure.Migrations
                     b.Property<long>("Id")
                         .HasColumnType("BigInt");
 
-                    b.Property<long>("postId")
-                        .HasColumnType("BigInt");
+                    b.Property<Guid>("postId")
+                        .HasColumnType("UNIQUEIDENTIFIER");
 
                     b.Property<string>("tag")
                         .IsRequired()
@@ -1956,76 +1957,6 @@ namespace IslamicFace.Infrastructure.Migrations
                         .HasAnnotation("SqlServer:Identity", "1, 1");
 
                     b.ToTable("Reactions", (string)null);
-                });
-
-            modelBuilder.Entity("IslamicFace.Domain.Entities.User", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("UNIQUEIDENTIFIER");
-
-                    b.Property<string>("bio")
-                        .IsRequired()
-                        .HasMaxLength(160)
-                        .HasColumnType("VARCHAR");
-
-                    b.Property<int>("cityID")
-                        .HasColumnType("Int");
-
-                    b.Property<int>("countryID")
-                        .HasColumnType("Int");
-
-                    b.Property<DateOnly>("dateOfBirth")
-                        .HasColumnType("Date");
-
-                    b.Property<string>("email")
-                        .IsRequired()
-                        .HasMaxLength(254)
-                        .HasColumnType("VARCHAR");
-
-                    b.Property<bool>("gender")
-                        .HasColumnType("Bit");
-
-                    b.Property<DateTime>("joinDate")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("DateTime")
-                        .HasDefaultValueSql("GETDATE()");
-
-                    b.Property<string>("name")
-                        .IsRequired()
-                        .HasMaxLength(40)
-                        .HasColumnType("VARCHAR");
-
-                    b.Property<string>("password")
-                        .IsRequired()
-                        .HasMaxLength(64)
-                        .HasColumnType("VARCHAR");
-
-                    b.Property<string>("profilePictureURL")
-                        .IsRequired()
-                        .HasMaxLength(2083)
-                        .HasColumnType("VARCHAR");
-
-                    b.Property<byte>("settingId")
-                        .HasColumnType("TinyInt");
-
-                    b.Property<string>("userName")
-                        .IsRequired()
-                        .HasMaxLength(12)
-                        .HasColumnType("VARCHAR");
-
-                    b.Property<byte>("userType")
-                        .HasColumnType("TinyInt");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("countryID")
-                        .IsUnique();
-
-                    b.HasIndex("settingId")
-                        .IsUnique();
-
-                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("IslamicFace.Domain.Entities.UserSetting", b =>
@@ -2060,6 +1991,247 @@ namespace IslamicFace.Infrastructure.Migrations
                         });
                 });
 
+            modelBuilder.Entity("IslamicFace.Infrastructure.EFCore.IdentityUser.AppUser", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("UNIQUEIDENTIFIER")
+                        .HasDefaultValueSql("NEWID()");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("bio")
+                        .IsRequired()
+                        .HasMaxLength(160)
+                        .HasColumnType("VARCHAR");
+
+                    b.Property<int>("cityID")
+                        .HasColumnType("Int");
+
+                    b.Property<int>("countryID")
+                        .HasColumnType("Int");
+
+                    b.Property<DateOnly>("dateOfBirth")
+                        .HasColumnType("Date");
+
+                    b.Property<bool>("gender")
+                        .HasColumnType("Bit");
+
+                    b.Property<DateTime>("joinDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("DateTime")
+                        .HasDefaultValueSql("GETDATE()");
+
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("VARCHAR");
+
+                    b.Property<string>("profilePictureURL")
+                        .IsRequired()
+                        .HasMaxLength(2083)
+                        .HasColumnType("VARCHAR");
+
+                    b.Property<byte>("settingId")
+                        .HasColumnType("TinyInt");
+
+                    b.Property<byte>("userType")
+                        .HasColumnType("TinyInt");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.HasIndex("countryID");
+
+                    b.HasIndex("settingId")
+                        .IsUnique();
+
+                    b.ToTable("Users", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
+
+                    b.ToTable("AspNetRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("RoleId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetRoleClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("UNIQUEIDENTIFIER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
+                {
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderKey")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderDisplayName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("UNIQUEIDENTIFIER");
+
+                    b.HasKey("LoginProvider", "ProviderKey");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserLogins", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>", b =>
+                {
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("UNIQUEIDENTIFIER");
+
+                    b.Property<Guid>("RoleId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetUserRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
+                {
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("UNIQUEIDENTIFIER");
+
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId", "LoginProvider", "Name");
+
+                    b.ToTable("AspNetUserTokens", (string)null);
+                });
+
             modelBuilder.Entity("IslamicFace.Domain.Entities.City", b =>
                 {
                     b.HasOne("IslamicFace.Domain.Entities.Country", "Country")
@@ -2073,32 +2245,26 @@ namespace IslamicFace.Infrastructure.Migrations
 
             modelBuilder.Entity("IslamicFace.Domain.Entities.FriendRequest", b =>
                 {
-                    b.HasOne("IslamicFace.Domain.Entities.User", "Receiver")
+                    b.HasOne("IslamicFace.Infrastructure.EFCore.IdentityUser.AppUser", null)
                         .WithMany("RecoversRequests")
                         .HasForeignKey("ReceiverID")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("IslamicFace.Domain.Entities.User", "Sender")
+                    b.HasOne("IslamicFace.Infrastructure.EFCore.IdentityUser.AppUser", null)
                         .WithMany("senderRequests")
                         .HasForeignKey("senderID")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
-
-                    b.Navigation("Receiver");
-
-                    b.Navigation("Sender");
                 });
 
             modelBuilder.Entity("IslamicFace.Domain.Entities.Post", b =>
                 {
-                    b.HasOne("IslamicFace.Domain.Entities.User", "User")
+                    b.HasOne("IslamicFace.Infrastructure.EFCore.IdentityUser.AppUser", null)
                         .WithMany("Posts")
                         .HasForeignKey("userId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("IslamicFace.Domain.Entities.PostComment", b =>
@@ -2106,7 +2272,7 @@ namespace IslamicFace.Infrastructure.Migrations
                     b.HasOne("IslamicFace.Domain.Entities.PostComment", "comment")
                         .WithMany("Post_Comments")
                         .HasForeignKey("ParentCommentID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.HasOne("IslamicFace.Domain.Entities.Post", "Post")
                         .WithMany("PostComments")
@@ -2114,15 +2280,13 @@ namespace IslamicFace.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("IslamicFace.Domain.Entities.User", "User")
+                    b.HasOne("IslamicFace.Infrastructure.EFCore.IdentityUser.AppUser", null)
                         .WithMany("Comments")
                         .HasForeignKey("userId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Post");
-
-                    b.Navigation("User");
 
                     b.Navigation("comment");
                 });
@@ -2152,17 +2316,15 @@ namespace IslamicFace.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("IslamicFace.Domain.Entities.User", "User")
+                    b.HasOne("IslamicFace.Infrastructure.EFCore.IdentityUser.AppUser", null)
                         .WithMany("PostReactions")
                         .HasForeignKey("userId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Post");
 
                     b.Navigation("Reaction");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("IslamicFace.Domain.Entities.PostTag", b =>
@@ -2176,17 +2338,17 @@ namespace IslamicFace.Infrastructure.Migrations
                     b.Navigation("Post");
                 });
 
-            modelBuilder.Entity("IslamicFace.Domain.Entities.User", b =>
+            modelBuilder.Entity("IslamicFace.Infrastructure.EFCore.IdentityUser.AppUser", b =>
                 {
                     b.HasOne("IslamicFace.Domain.Entities.Country", "Country")
-                        .WithOne("User")
-                        .HasForeignKey("IslamicFace.Domain.Entities.User", "countryID")
+                        .WithMany()
+                        .HasForeignKey("countryID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("IslamicFace.Domain.Entities.UserSetting", "UserSetting")
-                        .WithOne("User")
-                        .HasForeignKey("IslamicFace.Domain.Entities.User", "settingId")
+                        .WithOne()
+                        .HasForeignKey("IslamicFace.Infrastructure.EFCore.IdentityUser.AppUser", "settingId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
@@ -2195,11 +2357,60 @@ namespace IslamicFace.Infrastructure.Migrations
                     b.Navigation("UserSetting");
                 });
 
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
+                {
+                    b.HasOne("IslamicFace.Infrastructure.EFCore.IdentityUser.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
+                {
+                    b.HasOne("IslamicFace.Infrastructure.EFCore.IdentityUser.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("IslamicFace.Infrastructure.EFCore.IdentityUser.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
+                {
+                    b.HasOne("IslamicFace.Infrastructure.EFCore.IdentityUser.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("IslamicFace.Domain.Entities.Country", b =>
                 {
                     b.Navigation("Cities");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("IslamicFace.Domain.Entities.Post", b =>
@@ -2223,7 +2434,7 @@ namespace IslamicFace.Infrastructure.Migrations
                     b.Navigation("PostReaction");
                 });
 
-            modelBuilder.Entity("IslamicFace.Domain.Entities.User", b =>
+            modelBuilder.Entity("IslamicFace.Infrastructure.EFCore.IdentityUser.AppUser", b =>
                 {
                     b.Navigation("Comments");
 
@@ -2234,11 +2445,6 @@ namespace IslamicFace.Infrastructure.Migrations
                     b.Navigation("RecoversRequests");
 
                     b.Navigation("senderRequests");
-                });
-
-            modelBuilder.Entity("IslamicFace.Domain.Entities.UserSetting", b =>
-                {
-                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }

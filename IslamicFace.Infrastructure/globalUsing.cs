@@ -1,0 +1,13 @@
+﻿global using IslamicFace.Domain;
+global using IslamicFace.Domain.ErrorHandleClasses;
+global using IslamicFace.Domain.Abstractions.IRepositories;
+global using IslamicFace.Infrastructure.context;
+global using Microsoft.EntityFrameworkCore;
+global using System.ComponentModel.DataAnnotations;
+global using IslamicFace.Domain.Enums;
+global using IslamicFace.Domain.Entities;
+global using Microsoft.EntityFrameworkCore.Metadata.Builders;
+global using IslamicFace.Application.Abstractions.IServices.IdentityServices;
+global using IslamicFace.Application.Abstractions.IServices.ServiceDTOs;
+global using IslamicFace.Infrastructure.EFCore.IdentityUser;
+global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;

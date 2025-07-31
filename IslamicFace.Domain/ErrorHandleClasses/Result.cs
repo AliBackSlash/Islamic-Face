@@ -1,4 +1,4 @@
-﻿namespace IslamicFace.Application.ErrorHandleClasses;
+﻿namespace IslamicFace.Domain.ErrorHandleClasses;
 
 public class Result
 {

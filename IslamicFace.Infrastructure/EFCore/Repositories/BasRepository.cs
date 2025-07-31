@@ -1,6 +1,4 @@
-﻿using IslamicFace.Domain.Abstractions.IRepositories;
-using IslamicFace.Infrastructure.context;
-using Microsoft.EntityFrameworkCore;
+﻿
 
 namespace IslamicFace.Infrastructure.EFCore.Repositories;
 
@@ -23,7 +21,28 @@ public class BasRepository<TEntity, IdType> : IBasRepository<TEntity, IdType> wh
 
     public void Delete(TEntity entity) => _dbSet.Remove(entity);
 
-    public async Task<int> SaveChangesAsync() => await _context.SaveChangesAsync();
+    public async Task<Result<int>> SaveChangesAsync()
+    {
+        try
+        {
+            var affectedRows = await _context.SaveChangesAsync();
+            return Result.Success(affectedRows);
+        }
+        catch (DbUpdateException ex)
+        {
+            var message = ex.InnerException?.Message ?? ex.Message;
+            return Result.Failure<int>(Error.Conflict("Database.Update", message));
+        }
+        catch (ValidationException ex)
+        {
+            return Result.Failure<int>(Error.Validation("Validation.Error", ex.Message));
+        }
+        catch (Exception ex)
+        {
+            return Result.Failure<int>(Error.Problem("Unknown.Error", ex.Message));
+        }
+    }
+    
     public int SaveChange() => _context.SaveChanges();
 
     public async Task<PagedResult<TEntity>> GetPagedAsync(IQueryable<TEntity> query, PaginationParams paginationParams, CancellationToken cancellationToken = default)

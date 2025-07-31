@@ -23,8 +23,8 @@ namespace IslamicFace.Infrastructure.context.Config
                   .IsRequired();
 
             builder.Property(x => x.postId)
-                .HasColumnType("BigInt")
-                .IsRequired();
+                .HasColumnType("UNIQUEIDENTIFIER")
+                  .IsRequired();
 
             builder.Property(x => x.ParentCommentID)
                 .HasColumnType("BigInt")
@@ -48,7 +48,7 @@ namespace IslamicFace.Infrastructure.context.Config
             builder.HasMany(x => x.Post_Comments)
                 .WithOne(x => x.comment)
                 .HasForeignKey(x => x.ParentCommentID)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.NoAction);
 
         }
     }

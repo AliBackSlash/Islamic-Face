@@ -11,7 +11,5 @@ namespace IslamicFace.Domain.Entities
         public DateTime? ResponseAt { get; set; }
         public DateTime DateSend { get; internal set; }
 
-        public User? Sender { get; set; }  
-        public User? Receiver { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace IslamicFace.Application.ErrorHandleClasses;
+﻿namespace IslamicFace.Domain.ErrorHandleClasses;
 
 public class Error
 {
@@ -19,6 +19,7 @@ public class Error
     public string Description { get; }
 
     public ErrorType Type { get; }
+    public bool IsInternalError { get; }
 
     public static Error Failure(string code, string description) =>
         new(code, description, ErrorType.Failure);

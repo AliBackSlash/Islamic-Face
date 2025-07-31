@@ -1,25 +1,25 @@
-﻿using IslamicFace.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿
 
+using Microsoft.AspNetCore.Identity;
 
 namespace IslamicFace.Infrastructure.context
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<AppUser,IdentityRole<Guid>,Guid>
     {
-        public AppDbContext(DbContextOptions options) : base(options)
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
 
-        public DbSet<Country> Countries { get; set; }
-        public DbSet<FriendRequest> FriendRequests { get; set; }
-        public DbSet<Post> Posts { get; set; }
-        public DbSet<PostComment> PostComments { get; set; }
-        public DbSet<PostMedia> PostMedias { get; set; }
-        public DbSet<PostReaction> PostReactions { get; set; }
-        public DbSet<PostTag> PostTags { get; set; }
-        public DbSet<Reaction> Reactions { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<UserSetting> UserSettings { get; set; }
+        public DbSet<Country> Countries => Set<Country>();
+        public DbSet<FriendRequest> FriendRequests => Set<FriendRequest>();
+        public DbSet<Post> Posts => Set<Post>();
+        public DbSet<PostComment> PostComments => Set<PostComment>();
+        public DbSet<PostMedia> PostMedias => Set<PostMedia>();
+        public DbSet<PostReaction> PostReactions => Set<PostReaction>();
+        public DbSet<PostTag> PostTags => Set<PostTag>();
+        public DbSet<Reaction> Reactions => Set<Reaction>();
+        public DbSet<AppUser> AppUsers => Set<AppUser>();
+        public DbSet<UserSetting> UserSettings => Set<UserSetting>();
 
 
         protected override void OnModelCreating(ModelBuilder Builder)

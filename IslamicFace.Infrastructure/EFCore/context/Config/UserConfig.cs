@@ -1,29 +1,20 @@
-﻿using IslamicFace.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
-
-namespace IslamicFace.Infrastructure.context.Config
+﻿namespace IslamicFace.Infrastructure.context.Config
 {
-    public class UserConfig : IEntityTypeConfiguration<User>
+    public class UserConfig : IEntityTypeConfiguration<AppUser>
     {
-        public void Configure(EntityTypeBuilder<User> builder)
+        public void Configure(EntityTypeBuilder<AppUser> builder)
         {
             builder.ToTable("Users");
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Id)
                   .HasColumnType("UNIQUEIDENTIFIER")
+                  .HasDefaultValueSql("NEWID()")
                   .IsRequired();
-            builder.Property(x => x.userName)
-                .HasColumnType("VARCHAR") 
-                .HasMaxLength(12)
-                .IsRequired();
 
-            builder.Property(x => x.password)
-                .HasColumnType("VARCHAR")
-                .HasMaxLength(64)
-                .IsRequired();
+           
+
+           
 
             builder.Property(x => x.name)
                 .HasColumnType("VARCHAR")
@@ -34,12 +25,7 @@ namespace IslamicFace.Infrastructure.context.Config
                 .HasColumnType("VARCHAR")
                 .HasMaxLength(2083)
                 .IsRequired();
-
-            builder.Property(x => x.email)
-                .HasColumnType("VARCHAR")
-                .HasMaxLength(254)
-                .IsRequired();
-
+       
             builder.Property(x => x.cityID)
                 .HasColumnType("Int")
                 .IsRequired();
@@ -69,21 +55,21 @@ namespace IslamicFace.Infrastructure.context.Config
             //One  to One
             //User => Country
             builder.HasOne(x => x.Country)
-                .WithOne(x => x.User)
-                .HasForeignKey<User>(x => x.countryID)
+                .WithMany()
+                .HasForeignKey(x => x.countryID)
                 .OnDelete(DeleteBehavior.Restrict);
 
             //One         to Many
             //User.Sender => FriendRequests
             builder.HasMany(x => x.senderRequests)
-                 .WithOne(x => x.Sender)
+                 .WithOne()
                  .HasForeignKey(x => x.senderID)
                  .OnDelete(DeleteBehavior.NoAction);
 
             ////One           to Many
             //User.Receiver => FriendRequests
             builder.HasMany(x => x.RecoversRequests)
-                 .WithOne(x => x.Receiver)
+                 .WithOne()
                  .HasForeignKey(x => x.ReceiverID)
                  .OnDelete(DeleteBehavior.NoAction);
 
@@ -92,27 +78,28 @@ namespace IslamicFace.Infrastructure.context.Config
             //One  to Many
             //User => Posts
             builder.HasMany(x => x.Posts)
-                .WithOne(x => x.User)
+                .WithOne()
                 .HasForeignKey(x => x.userId);
 
             //One  to Many
             //User => PostComments
             builder.HasMany(x => x.Comments)
-                .WithOne(x => x.User)
-                .HasForeignKey(x => x.userId);
+                .WithOne()
+                .HasForeignKey(x => x.userId)
+                .OnDelete(DeleteBehavior.NoAction);
 
             //One  to Many
             //Post => PostReactions
             builder.HasMany(x => x.PostReactions)
-                .WithOne(x => x.User)
-                .HasForeignKey(x => x.userId);
+                .WithOne()
+                .HasForeignKey(x => x.userId).OnDelete(DeleteBehavior.NoAction);
 
 
             //One  to One
             //User => Setting
             builder.HasOne(x => x.UserSetting)
-                .WithOne(x => x.User)
-                .HasForeignKey<User>(x => x.settingId)
+                .WithOne()
+                .HasForeignKey<AppUser>(x => x.settingId)
                 .OnDelete(DeleteBehavior.Restrict);
 
         }

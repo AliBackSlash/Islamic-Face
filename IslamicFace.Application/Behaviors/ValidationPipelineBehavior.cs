@@ -1,4 +1,5 @@
-﻿namespace IslamicFace.Application.Behaviors;
+﻿
+namespace IslamicFace.Application.Behaviors;
 
 public class ValidationPipelineBehavior<TRequest, TResponse>(
     IEnumerable<IValidator<TRequest>> validators)

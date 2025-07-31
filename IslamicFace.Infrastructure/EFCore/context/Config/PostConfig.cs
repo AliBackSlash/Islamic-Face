@@ -10,11 +10,12 @@ namespace IslamicFace.Infrastructure.context.Config
         public void Configure(EntityTypeBuilder<Post> builder)
         {
             builder.ToTable("Posts");
-            builder.HasKey(x => x.Id).HasAnnotation("SqlServer:Identity", "1, 1");
+            builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Id)
-                   .HasColumnType("BigInt")
-                   .IsRequired();
+                  .HasColumnType("UNIQUEIDENTIFIER")
+                  .HasDefaultValueSql("NEWID()")
+                  .IsRequired();
 
             builder.Property(x => x.postText)
                 .HasColumnType("VARCHAR")
