@@ -5,18 +5,19 @@ namespace IslamicFace.Infrastructure.EFCore.IdentityUser;
 public class AppUser : IdentityUser<Guid>
 {
 
-    public required string name { get; set; }
-    public short countryID { get; set; }
-    public short cityID { get; set; }
-    public DateOnly dateOfBirth { get; set; }
+    public string? name { get; set; }
+    public short? countryID { get; set; }
+    public short? cityID { get; set; }
+    public DateOnly? dateOfBirth { get; set; }
     public DateTime joinDate { get; set; }
     public bool gender { get; set; }
     public string? profilePictureURL { get; set; }
     public  string? bio {  get; set; }
     public UserTypes userType { get; set; }
-    public byte settingId { get; set; }
+    public byte? settingId { get; set; }
 
     public Country? Country { get; set; }
+    public City? City {  get; set; }
     public ICollection<FriendRequest>  senderRequests { get; set; } = new List<FriendRequest>();
     
     public ICollection<FriendRequest>  RecoversRequests { get; set; } = new List<FriendRequest>();

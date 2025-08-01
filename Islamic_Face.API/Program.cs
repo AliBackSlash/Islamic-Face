@@ -1,6 +1,11 @@
 #region Initialize builder
 
 
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllers();
@@ -16,6 +21,32 @@ builder.Services.AddDbContext<AppDbContext>(bl => bl.UseSqlServer(
     p => p.MigrationsAssembly(typeof(AppDbContext).Assembly)
 
     ));
+
+#endregion
+
+#region Configer JWT Bearer
+var JWTValues = builder.Configuration.GetSection("JWT").Get<JWT>();
+builder.Services.AddSingleton(JWTValues);
+builder.Services.AddAuthentication(op =>
+{
+    op.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    op.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(ops =>
+{
+    ops.RequireHttpsMetadata = false;
+    ops.SaveToken = false;
+    ops.TokenValidationParameters = new TokenValidationParameters()
+    {
+        ValidateLifetime = true,
+        ValidateIssuer = true,
+        ValidIssuer = JWTValues!.Issuer,
+        ValidateAudience = true,
+        ValidAudience = JWTValues!.Audience,
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey =  new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JWTValues!.SigningKey))
+    };
+});
+
 #endregion
 
 builder.Configuration.GetSection("JWT").Get<JWT>();
@@ -27,6 +58,11 @@ builder.Services.AddApiLayerServices();
 var app = builder.Build();
 
 
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    dbContext.Database.Migrate(); // This applies any pending migrations
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -36,7 +72,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

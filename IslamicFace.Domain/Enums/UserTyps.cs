@@ -2,5 +2,5 @@
 
 public enum UserTypes
 {
-    Regular = 0, Moderator = 1, Admin = 2
+    User = 0,Admin,RootAdmin
 }

@@ -19,29 +19,26 @@
             builder.Property(x => x.name)
                 .HasColumnType("VARCHAR")
                 .HasMaxLength(40)
-                .IsRequired();
+                .IsRequired(false);
 
             builder.Property(x => x.profilePictureURL)
                 .HasColumnType("VARCHAR")
                 .HasMaxLength(2083)
-                .IsRequired();
+                .IsRequired(false);
        
             builder.Property(x => x.cityID)
-                .HasColumnType("Int")
-                .IsRequired();
+                .HasColumnType("Int");
 
             builder.Property(x => x.bio)
                 .HasColumnType("VARCHAR")
                 .HasMaxLength(160)
-                .IsRequired();
+                .IsRequired(false);
 
             builder.Property(x => x.gender)
-                .HasColumnType("Bit")
-                .IsRequired();
+                .HasColumnType("Bit");
 
             builder.Property(x => x.dateOfBirth)
-                .HasColumnType("Date")
-                .IsRequired();
+                .HasColumnType("Date");
 
             builder.Property(x => x.joinDate)
                 .HasColumnType("DateTime")
@@ -49,15 +46,23 @@
                 .IsRequired();
            
             builder.Property(x => x.userType)
-                .HasColumnType("TinyInt")               
-                .IsRequired();
+                .HasColumnType("TinyInt");
 
             //One  to One
             //User => Country
             builder.HasOne(x => x.Country)
                 .WithMany()
                 .HasForeignKey(x => x.countryID)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired(false);
+            
+            //One  to One
+            //User => Country
+            builder.HasOne(x => x.City)
+                .WithMany()
+                .HasForeignKey(x => x.cityID)
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired(false);
 
             //One         to Many
             //User.Sender => FriendRequests
@@ -73,7 +78,9 @@
                  .HasForeignKey(x => x.ReceiverID)
                  .OnDelete(DeleteBehavior.NoAction);
 
-
+            builder.Property(x => x.countryID).IsRequired(false);
+            builder.Property(x => x.cityID).IsRequired(false);
+            builder.Property(x => x.settingId).IsRequired(false);
 
             //One  to Many
             //User => Posts
@@ -98,9 +105,10 @@
             //One  to One
             //User => Setting
             builder.HasOne(x => x.UserSetting)
-                .WithOne()
-                .HasForeignKey<AppUser>(x => x.settingId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .WithMany()
+                .HasForeignKey(x => x.settingId)
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired(false);
 
         }
     }

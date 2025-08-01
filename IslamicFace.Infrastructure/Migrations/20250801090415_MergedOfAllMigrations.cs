@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace IslamicFace.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class MergeOOfAllMigratins : Migration
+    public partial class MergedOfAllMigrations : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -57,7 +57,7 @@ namespace IslamicFace.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<byte>(type: "TinyInt", nullable: false),
-                    GenderOfFriends = table.Column<string>(type: "nvarchar(7)", nullable: false)
+                    GenderOfFriends = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -110,16 +110,16 @@ namespace IslamicFace.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "UNIQUEIDENTIFIER", nullable: false, defaultValueSql: "NEWID()"),
-                    name = table.Column<string>(type: "VARCHAR(40)", maxLength: 40, nullable: false),
-                    countryID = table.Column<int>(type: "Int", nullable: false),
-                    cityID = table.Column<int>(type: "Int", nullable: false),
-                    dateOfBirth = table.Column<DateOnly>(type: "Date", nullable: false),
+                    name = table.Column<string>(type: "VARCHAR(40)", maxLength: 40, nullable: true),
+                    countryID = table.Column<int>(type: "Int", nullable: true),
+                    cityID = table.Column<int>(type: "Int", nullable: true),
+                    dateOfBirth = table.Column<DateOnly>(type: "Date", nullable: true),
                     joinDate = table.Column<DateTime>(type: "DateTime", nullable: false, defaultValueSql: "GETDATE()"),
                     gender = table.Column<bool>(type: "Bit", nullable: false),
-                    profilePictureURL = table.Column<string>(type: "VARCHAR(2083)", maxLength: 2083, nullable: false),
-                    bio = table.Column<string>(type: "VARCHAR(160)", maxLength: 160, nullable: false),
+                    profilePictureURL = table.Column<string>(type: "VARCHAR(2083)", maxLength: 2083, nullable: true),
+                    bio = table.Column<string>(type: "VARCHAR(160)", maxLength: 160, nullable: true),
                     userType = table.Column<byte>(type: "TinyInt", nullable: false),
-                    settingId = table.Column<byte>(type: "TinyInt", nullable: false),
+                    settingId = table.Column<byte>(type: "TinyInt", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -138,6 +138,12 @@ namespace IslamicFace.Infrastructure.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Users_Cities_cityID",
+                        column: x => x.cityID,
+                        principalTable: "Cities",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Users_Countries_countryID",
                         column: x => x.countryID,
@@ -745,6 +751,11 @@ namespace IslamicFace.Infrastructure.Migrations
                 column: "NormalizedEmail");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Users_cityID",
+                table: "Users",
+                column: "cityID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Users_countryID",
                 table: "Users",
                 column: "countryID");
@@ -781,9 +792,6 @@ namespace IslamicFace.Infrastructure.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Cities");
-
-            migrationBuilder.DropTable(
                 name: "FriendRequests");
 
             migrationBuilder.DropTable(
@@ -811,10 +819,13 @@ namespace IslamicFace.Infrastructure.Migrations
                 name: "Users");
 
             migrationBuilder.DropTable(
-                name: "Countries");
+                name: "Cities");
 
             migrationBuilder.DropTable(
                 name: "UserSettings");
+
+            migrationBuilder.DropTable(
+                name: "Countries");
         }
     }
 }

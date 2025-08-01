@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IslamicFace.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250731091112_MergeOOfAllMigratins")]
-    partial class MergeOOfAllMigratins
+    [Migration("20250801090415_MergedOfAllMigrations")]
+    partial class MergedOfAllMigrations
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -2049,17 +2049,16 @@ namespace IslamicFace.Infrastructure.Migrations
                         .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("bio")
-                        .IsRequired()
                         .HasMaxLength(160)
                         .HasColumnType("VARCHAR");
 
-                    b.Property<int>("cityID")
+                    b.Property<int?>("cityID")
                         .HasColumnType("Int");
 
-                    b.Property<int>("countryID")
+                    b.Property<int?>("countryID")
                         .HasColumnType("Int");
 
-                    b.Property<DateOnly>("dateOfBirth")
+                    b.Property<DateOnly?>("dateOfBirth")
                         .HasColumnType("Date");
 
                     b.Property<bool>("gender")
@@ -2071,16 +2070,14 @@ namespace IslamicFace.Infrastructure.Migrations
                         .HasDefaultValueSql("GETDATE()");
 
                     b.Property<string>("name")
-                        .IsRequired()
                         .HasMaxLength(40)
                         .HasColumnType("VARCHAR");
 
                     b.Property<string>("profilePictureURL")
-                        .IsRequired()
                         .HasMaxLength(2083)
                         .HasColumnType("VARCHAR");
 
-                    b.Property<byte>("settingId")
+                    b.Property<byte?>("settingId")
                         .HasColumnType("TinyInt");
 
                     b.Property<byte>("userType")
@@ -2096,10 +2093,11 @@ namespace IslamicFace.Infrastructure.Migrations
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
+                    b.HasIndex("cityID");
+
                     b.HasIndex("countryID");
 
-                    b.HasIndex("settingId")
-                        .IsUnique();
+                    b.HasIndex("settingId");
 
                     b.ToTable("Users", (string)null);
                 });
@@ -2343,17 +2341,22 @@ namespace IslamicFace.Infrastructure.Migrations
 
             modelBuilder.Entity("IslamicFace.Infrastructure.EFCore.IdentityUser.AppUser", b =>
                 {
+                    b.HasOne("IslamicFace.Domain.Entities.City", "City")
+                        .WithMany()
+                        .HasForeignKey("cityID")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("IslamicFace.Domain.Entities.Country", "Country")
                         .WithMany()
                         .HasForeignKey("countryID")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("IslamicFace.Domain.Entities.UserSetting", "UserSetting")
-                        .WithOne()
-                        .HasForeignKey("IslamicFace.Infrastructure.EFCore.IdentityUser.AppUser", "settingId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .WithMany()
+                        .HasForeignKey("settingId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("City");
 
                     b.Navigation("Country");
 

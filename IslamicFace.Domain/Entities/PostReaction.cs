@@ -7,6 +7,6 @@
         public byte reactTypeID { get; set; }
 
         public Post? Post { get; set; }        
-        public Reaction? Reaction { get; set; }
+        public Reaction?Reaction { get; set; }
     }
 }

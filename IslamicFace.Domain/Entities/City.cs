@@ -2,7 +2,7 @@
 
 public class City
 {
-    public int Id { get; set; }
+    public short Id { get; set; }
     public required string Name_ENG { get; set; } // for city name in English
     public required string Name_ARB { get; set; } // for city name in Arabic
 
