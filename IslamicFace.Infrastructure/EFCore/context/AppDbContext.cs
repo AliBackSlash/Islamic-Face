@@ -20,7 +20,12 @@ namespace IslamicFace.Infrastructure.context
         public DbSet<Reaction> Reactions => Set<Reaction>();
         public DbSet<AppUser> AppUsers => Set<AppUser>();
         public DbSet<UserSetting> UserSettings => Set<UserSetting>();
+        public DbSet<UserInterestField> UserInterestFields => Set<UserInterestField>();
+        public DbSet<InterestField> InterestFields => Set<InterestField>();
+        public DbSet<UserBlock> UserBlocks => Set<UserBlock>();
+        public DbSet<Notification> Notifications => Set<Notification>();
 
+        
 
         protected override void OnModelCreating(ModelBuilder Builder)
         {

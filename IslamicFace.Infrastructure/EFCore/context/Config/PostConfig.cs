@@ -28,7 +28,7 @@ namespace IslamicFace.Infrastructure.context.Config
 
             builder.Property(x => x.createdAt)
                 .HasColumnType("DateTime")
-                .HasDefaultValueSql("GETDATE()")
+                .HasDefaultValueSql("GETUTCDATE()")
                 .IsRequired();
 
             ////One  to Many

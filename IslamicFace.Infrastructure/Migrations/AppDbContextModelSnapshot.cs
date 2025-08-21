@@ -1785,7 +1785,7 @@ namespace IslamicFace.Infrastructure.Migrations
                     b.Property<DateTime>("DateSend")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("DateTime")
-                        .HasDefaultValueSql("GETDATE()");
+                        .HasDefaultValueSql("GETUTCDATE()");
 
                     b.Property<Guid>("ReceiverID")
                         .HasColumnType("UNIQUEIDENTIFIER");
@@ -1810,6 +1810,134 @@ namespace IslamicFace.Infrastructure.Migrations
                     b.ToTable("FriendRequests", (string)null);
                 });
 
+            modelBuilder.Entity("IslamicFace.Domain.Entities.InterestField", b =>
+                {
+                    b.Property<byte>("Id")
+                        .HasColumnType("TINYINT");
+
+                    b.Property<string>("FieldName_ARB")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("VARCHAR");
+
+                    b.Property<string>("FieldName_ENG")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("VARCHAR");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("InterestFields", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = (byte)1,
+                            FieldName_ARB = "العلوم",
+                            FieldName_ENG = "Science"
+                        },
+                        new
+                        {
+                            Id = (byte)2,
+                            FieldName_ARB = "التكنولوجيا",
+                            FieldName_ENG = "Technology"
+                        },
+                        new
+                        {
+                            Id = (byte)3,
+                            FieldName_ARB = "التعليم",
+                            FieldName_ENG = "Education"
+                        },
+                        new
+                        {
+                            Id = (byte)4,
+                            FieldName_ARB = "الرياضة",
+                            FieldName_ENG = "Sports"
+                        },
+                        new
+                        {
+                            Id = (byte)5,
+                            FieldName_ARB = "الزراعة",
+                            FieldName_ENG = "Agriculture"
+                        },
+                        new
+                        {
+                            Id = (byte)6,
+                            FieldName_ARB = "الفنون",
+                            FieldName_ENG = "Arts"
+                        },
+                        new
+                        {
+                            Id = (byte)7,
+                            FieldName_ARB = "الصحة",
+                            FieldName_ENG = "Health"
+                        },
+                        new
+                        {
+                            Id = (byte)8,
+                            FieldName_ARB = "الأعمال",
+                            FieldName_ENG = "Business"
+                        },
+                        new
+                        {
+                            Id = (byte)9,
+                            FieldName_ARB = "الدين",
+                            FieldName_ENG = "Religion"
+                        },
+                        new
+                        {
+                            Id = (byte)10,
+                            FieldName_ARB = "السياسة",
+                            FieldName_ENG = "Politics"
+                        });
+                });
+
+            modelBuilder.Entity("IslamicFace.Domain.Entities.Notification", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("UNIQUEIDENTIFIER")
+                        .HasDefaultValueSql("NEWID()");
+
+                    b.Property<Guid?>("CommentId")
+                        .HasColumnType("UNIQUEIDENTIFIER");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("DATETIME")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
+                    b.Property<bool>("IsRead")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("BIT")
+                        .HasDefaultValue(false);
+
+                    b.Property<string>("NotificationURL")
+                        .IsRequired()
+                        .HasMaxLength(2083)
+                        .HasColumnType("VARCHAR");
+
+                    b.Property<Guid?>("PostId")
+                        .HasColumnType("UNIQUEIDENTIFIER");
+
+                    b.Property<Guid>("TriggeredByUserId")
+                        .HasColumnType("UNIQUEIDENTIFIER");
+
+                    b.Property<byte>("Type")
+                        .HasColumnType("TINYINT");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("UNIQUEIDENTIFIER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TriggeredByUserId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Notifications", (string)null);
+                });
+
             modelBuilder.Entity("IslamicFace.Domain.Entities.Post", b =>
                 {
                     b.Property<Guid>("Id")
@@ -1820,7 +1948,7 @@ namespace IslamicFace.Infrastructure.Migrations
                     b.Property<DateTime>("createdAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("DateTime")
-                        .HasDefaultValueSql("GETDATE()");
+                        .HasDefaultValueSql("GETUTCDATE()");
 
                     b.Property<string>("postText")
                         .IsRequired()
@@ -1855,7 +1983,7 @@ namespace IslamicFace.Infrastructure.Migrations
                     b.Property<DateTime>("createdAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("DateTime")
-                        .HasDefaultValueSql("GETDATE()");
+                        .HasDefaultValueSql("GETUTCDATE()");
 
                     b.Property<Guid>("postId")
                         .HasColumnType("UNIQUEIDENTIFIER");
@@ -1957,6 +2085,46 @@ namespace IslamicFace.Infrastructure.Migrations
                         .HasAnnotation("SqlServer:Identity", "1, 1");
 
                     b.ToTable("Reactions", (string)null);
+                });
+
+            modelBuilder.Entity("IslamicFace.Domain.Entities.UserBlock", b =>
+                {
+                    b.Property<Guid>("BlockerId")
+                        .HasColumnType("UNIQUEIDENTIFIER");
+
+                    b.Property<Guid>("BlockedId")
+                        .HasColumnType("UNIQUEIDENTIFIER");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("DATETIME")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
+                    b.Property<bool>("IsBlocked")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("BIT")
+                        .HasDefaultValue(false);
+
+                    b.HasKey("BlockerId", "BlockedId");
+
+                    b.HasIndex("BlockedId");
+
+                    b.ToTable("UserBlocks", (string)null);
+                });
+
+            modelBuilder.Entity("IslamicFace.Domain.Entities.UserInterestField", b =>
+                {
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("UNIQUEIDENTIFIER");
+
+                    b.Property<byte>("InterestFieldId")
+                        .HasColumnType("TINYINT");
+
+                    b.HasKey("UserId", "InterestFieldId");
+
+                    b.HasIndex("InterestFieldId");
+
+                    b.ToTable("UserInterestFields", (string)null);
                 });
 
             modelBuilder.Entity("IslamicFace.Domain.Entities.UserSetting", b =>
@@ -2064,7 +2232,7 @@ namespace IslamicFace.Infrastructure.Migrations
                     b.Property<DateTime>("joinDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("DateTime")
-                        .HasDefaultValueSql("GETDATE()");
+                        .HasDefaultValueSql("GETUTCDATE()");
 
                     b.Property<string>("name")
                         .HasMaxLength(40)
@@ -2256,6 +2424,21 @@ namespace IslamicFace.Infrastructure.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("IslamicFace.Domain.Entities.Notification", b =>
+                {
+                    b.HasOne("IslamicFace.Infrastructure.EFCore.IdentityUser.AppUser", null)
+                        .WithMany("TriggerNotifications")
+                        .HasForeignKey("TriggeredByUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("IslamicFace.Infrastructure.EFCore.IdentityUser.AppUser", null)
+                        .WithMany("ReceiveNotifications")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("IslamicFace.Domain.Entities.Post", b =>
                 {
                     b.HasOne("IslamicFace.Infrastructure.EFCore.IdentityUser.AppUser", null)
@@ -2334,6 +2517,38 @@ namespace IslamicFace.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Post");
+                });
+
+            modelBuilder.Entity("IslamicFace.Domain.Entities.UserBlock", b =>
+                {
+                    b.HasOne("IslamicFace.Infrastructure.EFCore.IdentityUser.AppUser", null)
+                        .WithMany("UserBlockedUsers")
+                        .HasForeignKey("BlockedId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("IslamicFace.Infrastructure.EFCore.IdentityUser.AppUser", null)
+                        .WithMany("UserBlockedFrom")
+                        .HasForeignKey("BlockerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("IslamicFace.Domain.Entities.UserInterestField", b =>
+                {
+                    b.HasOne("IslamicFace.Domain.Entities.InterestField", "InterestField")
+                        .WithMany("userInterestFields")
+                        .HasForeignKey("InterestFieldId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("IslamicFace.Infrastructure.EFCore.IdentityUser.AppUser", null)
+                        .WithMany("UserInterestFields")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("InterestField");
                 });
 
             modelBuilder.Entity("IslamicFace.Infrastructure.EFCore.IdentityUser.AppUser", b =>
@@ -2416,6 +2631,11 @@ namespace IslamicFace.Infrastructure.Migrations
                     b.Navigation("Cities");
                 });
 
+            modelBuilder.Entity("IslamicFace.Domain.Entities.InterestField", b =>
+                {
+                    b.Navigation("userInterestFields");
+                });
+
             modelBuilder.Entity("IslamicFace.Domain.Entities.Post", b =>
                 {
                     b.Navigation("PostComments");
@@ -2445,7 +2665,17 @@ namespace IslamicFace.Infrastructure.Migrations
 
                     b.Navigation("Posts");
 
+                    b.Navigation("ReceiveNotifications");
+
                     b.Navigation("RecoversRequests");
+
+                    b.Navigation("TriggerNotifications");
+
+                    b.Navigation("UserBlockedFrom");
+
+                    b.Navigation("UserBlockedUsers");
+
+                    b.Navigation("UserInterestFields");
 
                     b.Navigation("senderRequests");
                 });

@@ -40,7 +40,7 @@ namespace IslamicFace.Infrastructure.context.Config
 
             builder.Property(x => x.DateSend)
                .HasColumnType("DateTime")
-               .HasDefaultValueSql("GETDATE()")
+               .HasDefaultValueSql("GETUTCDATE()")
                .IsRequired();
 
 

@@ -15,7 +15,13 @@ builder.Services.AddOpenApi();
 
 #region register DbContext
 
-builder.Services.AddIdentity<AppUser, IdentityRole<Guid>>().AddEntityFrameworkStores<AppDbContext>();
+builder.Services.AddIdentity<AppUser, IdentityRole<Guid>>(options =>
+{
+    options.SignIn.RequireConfirmedEmail = true;
+})
+.AddEntityFrameworkStores<AppDbContext>()
+.AddDefaultTokenProviders();
+
 builder.Services.AddDbContext<AppDbContext>(bl => bl.UseSqlServer(
     builder.Configuration.GetConnectionString("DefaultConnection"),
     p => p.MigrationsAssembly(typeof(AppDbContext).Assembly)

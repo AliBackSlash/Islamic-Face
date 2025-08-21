@@ -1788,7 +1788,7 @@ namespace IslamicFace.Infrastructure.Migrations
                     b.Property<DateTime>("DateSend")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("DateTime")
-                        .HasDefaultValueSql("GETDATE()");
+                        .HasDefaultValueSql("GETUTCDATE()");
 
                     b.Property<Guid>("ReceiverID")
                         .HasColumnType("UNIQUEIDENTIFIER");
@@ -1823,7 +1823,7 @@ namespace IslamicFace.Infrastructure.Migrations
                     b.Property<DateTime>("createdAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("DateTime")
-                        .HasDefaultValueSql("GETDATE()");
+                        .HasDefaultValueSql("GETUTCDATE()");
 
                     b.Property<string>("postText")
                         .IsRequired()
@@ -1858,7 +1858,7 @@ namespace IslamicFace.Infrastructure.Migrations
                     b.Property<DateTime>("createdAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("DateTime")
-                        .HasDefaultValueSql("GETDATE()");
+                        .HasDefaultValueSql("GETUTCDATE()");
 
                     b.Property<Guid>("postId")
                         .HasColumnType("UNIQUEIDENTIFIER");
@@ -2067,7 +2067,7 @@ namespace IslamicFace.Infrastructure.Migrations
                     b.Property<DateTime>("joinDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("DateTime")
-                        .HasDefaultValueSql("GETDATE()");
+                        .HasDefaultValueSql("GETUTCDATE()");
 
                     b.Property<string>("name")
                         .HasMaxLength(40)

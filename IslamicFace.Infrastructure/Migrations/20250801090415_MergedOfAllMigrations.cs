@@ -114,7 +114,7 @@ namespace IslamicFace.Infrastructure.Migrations
                     countryID = table.Column<int>(type: "Int", nullable: true),
                     cityID = table.Column<int>(type: "Int", nullable: true),
                     dateOfBirth = table.Column<DateOnly>(type: "Date", nullable: true),
-                    joinDate = table.Column<DateTime>(type: "DateTime", nullable: false, defaultValueSql: "GETDATE()"),
+                    joinDate = table.Column<DateTime>(type: "DateTime", nullable: false, defaultValueSql: "GETUTCDATE()"),
                     gender = table.Column<bool>(type: "Bit", nullable: false),
                     profilePictureURL = table.Column<string>(type: "VARCHAR(2083)", maxLength: 2083, nullable: true),
                     bio = table.Column<string>(type: "VARCHAR(160)", maxLength: 160, nullable: true),
@@ -252,7 +252,7 @@ namespace IslamicFace.Infrastructure.Migrations
                     ReceiverID = table.Column<Guid>(type: "UNIQUEIDENTIFIER", nullable: false),
                     RequestStatus = table.Column<byte>(type: "TinyInt", nullable: false),
                     ResponseAt = table.Column<DateTime>(type: "DateTime", nullable: true),
-                    DateSend = table.Column<DateTime>(type: "DateTime", nullable: false, defaultValueSql: "GETDATE()")
+                    DateSend = table.Column<DateTime>(type: "DateTime", nullable: false, defaultValueSql: "GETUTCDATE()")
                 },
                 constraints: table =>
                 {
@@ -276,7 +276,7 @@ namespace IslamicFace.Infrastructure.Migrations
                     Id = table.Column<Guid>(type: "UNIQUEIDENTIFIER", nullable: false, defaultValueSql: "NEWID()"),
                     postText = table.Column<string>(type: "VARCHAR(500)", maxLength: 500, nullable: false),
                     userId = table.Column<Guid>(type: "UNIQUEIDENTIFIER", nullable: false),
-                    createdAt = table.Column<DateTime>(type: "DateTime", nullable: false, defaultValueSql: "GETDATE()")
+                    createdAt = table.Column<DateTime>(type: "DateTime", nullable: false, defaultValueSql: "GETUTCDATE()")
                 },
                 constraints: table =>
                 {
@@ -300,7 +300,7 @@ namespace IslamicFace.Infrastructure.Migrations
                     ParentCommentID = table.Column<long>(type: "BigInt", nullable: true),
                     Comment = table.Column<string>(type: "NVARCHAR(100)", maxLength: 100, nullable: true),
                     reactLikeCount = table.Column<int>(type: "int", nullable: false),
-                    createdAt = table.Column<DateTime>(type: "DateTime", nullable: false, defaultValueSql: "GETDATE()")
+                    createdAt = table.Column<DateTime>(type: "DateTime", nullable: false, defaultValueSql: "GETUTCDATE()")
                 },
                 constraints: table =>
                 {

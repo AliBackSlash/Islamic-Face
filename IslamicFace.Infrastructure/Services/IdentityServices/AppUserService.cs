@@ -2,6 +2,7 @@
 using IslamicFace.Domain.JWT;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+using System.Net;
 using System.Security.Claims;
 using System.Text;
 
@@ -9,58 +10,72 @@ namespace IslamicFace.Infrastructure.Services.IdentityServices;
 public class AppUserService(UserManager<AppUser> _userManager,JWT _jwt) : IAppUserService
 {
     //this implementation will call from user operations handlers CORS
+
+    public string? GetErrorDetails(IdentityResult result)
+    {
+        if (!result.Succeeded)
+        {
+            StringBuilder errors = new StringBuilder();
+            foreach (var error in result.Errors)
+            {
+                errors.Append($"{error.Description},");
+            }
+
+            return errors.ToString();
+        }
+        return null;
+    }
+   
     public async Task<Result<RegisterCommandResponse>> RegisterCredentialAsync(RegisterCommand command)
     {
         if (await _userManager.FindByEmailAsync(command.Email) is not null)
-            return Result.Failure<RegisterCommandResponse>(new Error ("Validation error", "Email already registered", ErrorType.Validation));
-      
-        if (await _userManager.FindByNameAsync(command.UserName) is not null)
-            return Result.Failure<RegisterCommandResponse>(new Error ("Validation error", "UserName already registered", ErrorType.Validation));
+            return Result.Failure<RegisterCommandResponse>(new Error("Validation error", "Email already registered", ErrorType.Validation));
 
-        AppUser user = new() 
+        if (await _userManager.FindByNameAsync(command.UserName) is not null)
+            return Result.Failure<RegisterCommandResponse>(new Error("Validation error", "UserName already registered", ErrorType.Validation));
+
+        AppUser user = new()
         {
             UserName = command.UserName,
-            Email = command.Email,
-            PasswordHash = command.Password,
-            
+            Email = command.Email
         };
 
-        var CreateResult = await _userManager.CreateAsync(user,command.Password);
+        string? createErrorDetails = GetErrorDetails(await _userManager.CreateAsync(user, command.Password));
+        if (createErrorDetails is not null)
+            return Result.Failure<RegisterCommandResponse>(new Error("Create Errors", createErrorDetails.TrimEnd(','), ErrorType.Conflict));
 
-        if (!CreateResult.Succeeded)
-        {
-            StringBuilder errors = new StringBuilder();
-            foreach (var error in CreateResult.Errors)
-            {
-                errors.Append($"{error.Description},");
-            }
+        string? addRoleErrorDetails = GetErrorDetails(await _userManager.AddToRoleAsync(user, "User"));
+        if (addRoleErrorDetails is not null)
+            return Result.Failure<RegisterCommandResponse>(new Error("Create Errors", addRoleErrorDetails.TrimEnd(','), ErrorType.Conflict));
 
-            return Result.Failure<RegisterCommandResponse>(new Error("Create Errors", errors.ToString().TrimEnd(','), ErrorType.Conflict));  
-        }
+        var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+        var encodedToken = WebUtility.UrlEncode(token);
 
-        var AddToRoleResult = await _userManager.AddToRoleAsync(user, "User");//by default any registration operation by any user it's role will be "User"
-                                                                              //** note i will move it tobe a trigger on table Users (AFTER INSERT)trigger
+        var confirmationLink = $"https://localhost:7145/confirm-email?userId={user.Id}&token={encodedToken}";
 
-        if (!AddToRoleResult.Succeeded)
-        {
-            StringBuilder errors = new StringBuilder();
-            foreach (var error in AddToRoleResult.Errors)
-            {
-                errors.Append($"{error.Description},");
-            }
-
-            return Result.Failure<RegisterCommandResponse>(new Error("Add to role Errors", errors.ToString().TrimEnd(','), ErrorType.Conflict));
-
-        }
-
-        var jwtSecurityToken = await CreateJWTToken(user);
+         //await _emailSender.SendEmailAsync(user.Email, "Confirm your email", confirmationLink);
 
         return Result.Success(new RegisterCommandResponse()
         {
             Id = user.Id,
-            Token = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken)
+            Token = null, 
+            ConfirmationLink = confirmationLink
         });
+    }
 
+    public async Task<Result> ConfirmEmailAsync(Guid userId, string token)
+    {
+        var user = await _userManager.FindByIdAsync(userId.ToString());
+        if (user == null)
+            return Result.Failure(new Error("Not found", "User not found", ErrorType.NotFound));
+
+        var decodedToken = WebUtility.UrlDecode(token);
+        string? emailConfirmationErrorDetails = GetErrorDetails(await _userManager.ConfirmEmailAsync(user, decodedToken));
+
+        if (emailConfirmationErrorDetails is not null)
+            return Result.Failure(new Error("Create Errors", emailConfirmationErrorDetails.TrimEnd(','), ErrorType.Conflict));
+
+        return Result.Success();
     }
     public Task<Result<AddReminderInfoForUserResponse>> AddReminderInfoForUserAsync(AddReminderInfoForUserCommand command)
     {
@@ -98,7 +113,7 @@ public class AppUserService(UserManager<AppUser> _userManager,JWT _jwt) : IAppUs
             issuer: _jwt.Issuer,
             audience: _jwt.Audience,
             claims: claims,
-            expires: DateTime.Now.AddMinutes(_jwt.Duration),
+            expires: DateTime.UtcNow.AddMinutes(_jwt.Duration),
             signingCredentials: SigningCredentials
             );
 

@@ -25,5 +25,12 @@ public class AppUser : IdentityUser<Guid>
     public ICollection<PostReaction> PostReactions { get; set; } = new List<PostReaction>();
     public ICollection<PostComment> Comments { get; set; } = new List<PostComment>();
     public ICollection<Post> Posts { get; set; } = new List<Post>();
+    public ICollection<UserInterestField> UserInterestFields { get; set; } = new List<UserInterestField>();
+    public ICollection<UserBlock> UserBlockedFrom { get; set; } = new List<UserBlock>();
+    public ICollection<UserBlock> UserBlockedUsers { get; set; } = new List<UserBlock>();
+    public ICollection<Notification> TriggerNotifications { get; set; } = new List<Notification>();
+    public ICollection<Notification> ReceiveNotifications { get; set; } = new List<Notification>();
+
+
     public UserSetting? UserSetting { get; set; }
 }

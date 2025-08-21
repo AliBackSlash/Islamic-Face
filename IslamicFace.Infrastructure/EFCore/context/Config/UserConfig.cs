@@ -42,7 +42,7 @@
 
             builder.Property(x => x.joinDate)
                 .HasColumnType("DateTime")
-                .HasDefaultValueSql("GETDATE()")
+                .HasDefaultValueSql("GETUTCDATE()")
                 .IsRequired();
            
             builder.Property(x => x.userType)
@@ -110,6 +110,37 @@
                 .OnDelete(DeleteBehavior.Restrict)
                 .IsRequired(false);
 
+            //Many              to One
+            //UserInterestField => User
+            builder.HasMany(x => x.UserInterestFields)
+                .WithOne()
+                .HasForeignKey(x =>  x.UserId)
+                .OnDelete(DeleteBehavior.Cascade)
+                .IsRequired();
+
+            builder.HasMany(x => x.UserBlockedFrom)
+                .WithOne()
+                .HasForeignKey(x => x.BlockerId)
+                .OnDelete(DeleteBehavior.Cascade)
+                .IsRequired();
+
+            builder.HasMany(x => x.UserBlockedUsers)
+                .WithOne()
+                .HasForeignKey(x => x.BlockedId)
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired();
+           
+            builder.HasMany(x => x.TriggerNotifications)
+                .WithOne()
+                .HasForeignKey(x => x.TriggeredByUserId)
+                .OnDelete(DeleteBehavior.Cascade)
+                .IsRequired();
+
+            builder.HasMany(x => x.ReceiveNotifications)
+                .WithOne()
+                .HasForeignKey(x => x.UserId)
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired();
         }
     }
 }
