@@ -1,5 +1,7 @@
 ﻿
 
+using System.Threading;
+
 namespace IslamicFace.Infrastructure.EFCore.Repositories;
 
 public class BasRepository<TEntity, IdType> : IBasRepository<TEntity, IdType> where TEntity : class
@@ -13,25 +15,21 @@ public class BasRepository<TEntity, IdType> : IBasRepository<TEntity, IdType> wh
         _dbSet = context.Set<TEntity>();
     }
 
-    public async Task<TEntity?> GetByIdAsync(IdType id) => await _dbSet.FindAsync(id);
-    public async Task<IEnumerable<TEntity>> GetAllAsync() => await _dbSet.ToListAsync();
-
-    public async Task AddAsync(TEntity entity) => await _dbSet.AddAsync(entity);
+    public async Task<TEntity?> GetByIdAsync(IdType id, CancellationToken cancellationToken) => await _dbSet.FindAsync(id, cancellationToken);
+    public async Task<IEnumerable<TEntity>> GetAllAsync(CancellationToken cancellationToken) => await _dbSet.ToListAsync(cancellationToken);
+    public async Task AddAsync(TEntity entity, CancellationToken cancellationToken) => await _dbSet.AddAsync(entity, cancellationToken);
     public void Update(TEntity entity) => _dbSet.Update(entity);
-
     public void Delete(TEntity entity) => _dbSet.Remove(entity);
-
-    public async Task<Result<int>> SaveChangesAsync()
+    public async Task<Result<int>> SaveChangesAsync(CancellationToken cancellationToken)
     {
         try
         {
-            var affectedRows = await _context.SaveChangesAsync();
+            var affectedRows = await _context.SaveChangesAsync(cancellationToken);
             return Result.Success(affectedRows);
         }
         catch (DbUpdateException ex)
         {
-            var message = ex.InnerException?.Message ?? ex.Message;
-            return Result.Failure<int>(Error.Conflict("Database.Update", message));
+            return Result.Failure<int>(Error.Conflict("Database.Update", ex.InnerException?.Message ?? ex.Message));
         }
         catch (ValidationException ex)
         {
@@ -42,9 +40,6 @@ public class BasRepository<TEntity, IdType> : IBasRepository<TEntity, IdType> wh
             return Result.Failure<int>(Error.Problem("Unknown.Error", ex.Message));
         }
     }
-    
-    public int SaveChange() => _context.SaveChanges();
-
     public async Task<PagedResult<TEntity>> GetPagedAsync(IQueryable<TEntity> query, PaginationParams paginationParams, CancellationToken cancellationToken = default)
     {
         var totalCount = await query.CountAsync(cancellationToken);

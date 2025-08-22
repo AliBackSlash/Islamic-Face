@@ -1,15 +1,18 @@
 ﻿using IslamicFace.Application.Features.AuthFeature.Commands;
+using IslamicFace.Domain.Abstractions.IServices;
 using IslamicFace.Domain.ErrorHandleClasses;
+using IslamicFace.Infrastructure.Services.EmailServices;
 using IslamicFace.Presentation.API.Controllers.v1.AuthController.DTOs;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
+using System.Net;
 
 namespace IslamicFace.Presentation.API.Controllers.v1.AuthController
 {
     [Route("api/Auth")]
     [ApiController]
-    public class AuthController(ISender _sender) : ControllerBase
+    public class AuthController(ISender _sender,IEmailService emailService,IConfiguration _config ) : ControllerBase
     {
         [AllowAnonymous]
         [HttpPost("Register")]
@@ -20,7 +23,7 @@ namespace IslamicFace.Presentation.API.Controllers.v1.AuthController
         {
             Result<RegisterCommandResponse> result = await _sender.Send(new RegisterCommand(request.Email, request.UserName, request.Password));
 
-            if(result.IsSuccess) 
+            if (result.IsSuccess)
                 return Ok(result);
 
             if (result.Errors.FirstOrDefault().Type == ErrorType.Validation)

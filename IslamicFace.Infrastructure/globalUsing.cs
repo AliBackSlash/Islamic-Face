@@ -8,7 +8,6 @@ global using IslamicFace.Domain.Enums;
 global using IslamicFace.Domain.Entities;
 global using Microsoft.EntityFrameworkCore.Metadata.Builders;
 global using IslamicFace.Application.Abstractions.IServices.IdentityServices;
-global using IslamicFace.Application.Abstractions.IServices.ServiceDTOs;
 global using IslamicFace.Infrastructure.EFCore.IdentityUser;
 global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 global using Microsoft.AspNetCore.Identity;

@@ -1,92 +1,39 @@
 ﻿using IslamicFace.Application.Features.AuthFeature.Commands;
+using IslamicFace.Domain.Abstractions.IServices;
 using IslamicFace.Domain.JWT;
+using IslamicFace.Domain.Layer_Dtos.AppUser.request;
+using IslamicFace.Domain.Layer_Dtos.AppUser.response;
+using IslamicFace.Infrastructure.EFCore.IdentityUser;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net;
 using System.Security.Claims;
 using System.Text;
+using System.Threading;
+using System.Web;
 
 namespace IslamicFace.Infrastructure.Services.IdentityServices;
-public class AppUserService(UserManager<AppUser> _userManager,JWT _jwt) : IAppUserService
+public class AppUserService(UserManager<AppUser> _userManager,JWT _jwt,IEmailService emailService) : IAppUserService
 {
-    //this implementation will call from user operations handlers CORS
 
-    public string? GetErrorDetails(IdentityResult result)
+    public async Task<Result<RegisterResponseDto>> RegisterCredentialAsync(RegisterUserDto reg_info, CancellationToken cancellationToken)
     {
-        if (!result.Succeeded)
-        {
-            StringBuilder errors = new StringBuilder();
-            foreach (var error in result.Errors)
-            {
-                errors.Append($"{error.Description},");
-            }
-
-            return errors.ToString();
-        }
-        return null;
-    }
-   
-    public async Task<Result<RegisterCommandResponse>> RegisterCredentialAsync(RegisterCommand command)
-    {
-        if (await _userManager.FindByEmailAsync(command.Email) is not null)
-            return Result.Failure<RegisterCommandResponse>(new Error("Validation error", "Email already registered", ErrorType.Validation));
-
-        if (await _userManager.FindByNameAsync(command.UserName) is not null)
-            return Result.Failure<RegisterCommandResponse>(new Error("Validation error", "UserName already registered", ErrorType.Validation));
-
+       
         AppUser user = new()
         {
-            UserName = command.UserName,
-            Email = command.Email
+            UserName = reg_info.UserName,
+            Email = reg_info.Email
         };
 
-        string? createErrorDetails = GetErrorDetails(await _userManager.CreateAsync(user, command.Password));
-        if (createErrorDetails is not null)
-            return Result.Failure<RegisterCommandResponse>(new Error("Create Errors", createErrorDetails.TrimEnd(','), ErrorType.Conflict));
+        var createResult = await _userManager.CreateAsync(user, reg_info.Password);
+        if (!createResult.Succeeded)
+            return Result.Failure<RegisterResponseDto>(new Error("Create Errors", string.Join(", ", createResult.Errors.Select(e => e.Description)), ErrorType.Create));
 
-        string? addRoleErrorDetails = GetErrorDetails(await _userManager.AddToRoleAsync(user, "User"));
-        if (addRoleErrorDetails is not null)
-            return Result.Failure<RegisterCommandResponse>(new Error("Create Errors", addRoleErrorDetails.TrimEnd(','), ErrorType.Conflict));
+        var jwtSecurityToken = await CreateJWTToken(user);
 
-        var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-        var encodedToken = WebUtility.UrlEncode(token);
-
-        var confirmationLink = $"https://localhost:7145/confirm-email?userId={user.Id}&token={encodedToken}";
-
-         //await _emailSender.SendEmailAsync(user.Email, "Confirm your email", confirmationLink);
-
-        return Result.Success(new RegisterCommandResponse()
-        {
-            Id = user.Id,
-            Token = null, 
-            ConfirmationLink = confirmationLink
-        });
+        return Result.Success(new RegisterResponseDto(user.Id,new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken)));
     }
-
-    public async Task<Result> ConfirmEmailAsync(Guid userId, string token)
-    {
-        var user = await _userManager.FindByIdAsync(userId.ToString());
-        if (user == null)
-            return Result.Failure(new Error("Not found", "User not found", ErrorType.NotFound));
-
-        var decodedToken = WebUtility.UrlDecode(token);
-        string? emailConfirmationErrorDetails = GetErrorDetails(await _userManager.ConfirmEmailAsync(user, decodedToken));
-
-        if (emailConfirmationErrorDetails is not null)
-            return Result.Failure(new Error("Create Errors", emailConfirmationErrorDetails.TrimEnd(','), ErrorType.Conflict));
-
-        return Result.Success();
-    }
-    public Task<Result<AddReminderInfoForUserResponse>> AddReminderInfoForUserAsync(AddReminderInfoForUserCommand command)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<Result<LoginUserResponse>> LoginAsync(RegisterCommand command)
-    {
-        throw new NotImplementedException();
-    }
-
     public async Task<JwtSecurityToken> CreateJWTToken(AppUser appUser)
     {
         var userClaims = await _userManager.GetClaimsAsync(appUser);
@@ -100,7 +47,11 @@ public class AppUserService(UserManager<AppUser> _userManager,JWT _jwt) : IAppUs
         {
              new Claim(JwtRegisteredClaimNames.Sub,appUser.UserName),
              new Claim(JwtRegisteredClaimNames.Jti,Guid.NewGuid().ToString()),
-             new Claim(JwtRegisteredClaimNames.Email,appUser.UserName),
+             new Claim(JwtRegisteredClaimNames.Email,appUser.Email ?? ""),
+             new Claim(JwtRegisteredClaimNames.UniqueName,appUser.UserName),
+             new Claim(JwtRegisteredClaimNames.Exp,DateTime.Now.AddMinutes(_jwt.Duration).ToString()),
+             new Claim("UType",appUser.userType.ToString()),
+
              new Claim("uid",appUser.Id.ToString()),
 
         }.Union(userClaims)
@@ -119,5 +70,72 @@ public class AppUserService(UserManager<AppUser> _userManager,JWT _jwt) : IAppUs
 
 
     }
+    public Task<Result<AddReminderInfoForUserResponseDto>> AddReminderInfoForUserAsync(AddReminderInfoForUserDto dto, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+    public Task<Result<string>> LoginAsync(LoginDto dto, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+    public Task<Result> ConfirmEmailAsync(Guid userId, string token, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+    public async Task<Result<bool>> IsEmailNotTakenAsync(string email)
+    {
+        if (await _userManager.FindByEmailAsync(email) is not null)
+            return Result.Failure<bool>(new Error("Validation error", "Invalid UserName Or Email", ErrorType.Validation));
 
+        return Result.Success(true);
+    }
+    public async Task<Result<bool>> IsUserNameNotTakenAsync(string userName)
+    {
+        if (await _userManager.FindByNameAsync(userName) is not null)
+            return Result.Failure<bool>(new Error("Validation error", "Invalid UserName Or Email", ErrorType.Validation));
+
+        return Result.Success(true);
+    }
+    public async Task<Result> AddUserToRoleAsync(Guid userId, string role)
+    {
+        AppUser? user = await _userManager.FindByIdAsync(userId.ToString());
+        if (user == null)
+            return Result.Failure(new Error("(Add Role) User Not Found", "", ErrorType.NotFound));
+
+        var roleResult = await _userManager.AddToRoleAsync(user, "User");
+        if (!roleResult.Succeeded)
+        {
+            await _userManager.DeleteAsync(user);
+            return Result.Failure<RegisterResponseDto>(new Error("Role Errors", string.Join(", ", roleResult.Errors.Select(e => e.Description)), ErrorType.Conflict));
+        }
+
+        return Result.Success();
+
+    }
+    public async Task<Result<string>> GenerateEmailConfirmationTokenAsync(Guid userId, CancellationToken cancellationToken)
+    {
+        AppUser? user = await _userManager.FindByIdAsync(userId.ToString());
+        if (user == null)
+            return Result.Failure<string>(new Error("(Generate Email Confirmation) User Not Found", "", ErrorType.NotFound));
+
+        var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+        var encodedToken = HttpUtility.UrlEncode(token);
+
+        if (string.IsNullOrEmpty(encodedToken))
+              return Result.Failure<string>(new Error("(Generate Email Confirmation) Error", "", ErrorType.NotFound));
+
+        return Result.Success($"https://localhost:7145/confirm-email?userId={user.Id}&token={encodedToken}");
+    }
+    public async Task<Result<bool>> DeleteUserAsync(Guid userId)
+    {
+        AppUser? user = await _userManager.FindByIdAsync(userId.ToString());
+        if (user == null)
+            return Result.Failure<bool>(new Error("(Delete User) User Not Found", "", ErrorType.NotFound));
+
+        var deleteResult = await _userManager.DeleteAsync(user);
+        if(deleteResult.Succeeded)
+            return Result.Success(true);
+
+        return Result.Failure<bool>(new Error("(Delete User) Errors", string.Join(", ", deleteResult.Errors.Select(e => e.Description)), ErrorType.Delete));
+    }
 }
