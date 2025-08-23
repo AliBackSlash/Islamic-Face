@@ -1,12 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\04-GitHub Repos\\Islamic-Face\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{C9B42395-52D5-48B8-97C2-5FB3FE1CC654}|Islamic_Face.API\\IslamicFace.Presentation.API.csproj|d:\\04-github repos\\islamic-face\\islamic_face.api\\controllers\\v1\\authcontroller\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C9B42395-52D5-48B8-97C2-5FB3FE1CC654}|Islamic_Face.API\\IslamicFace.Presentation.API.csproj|solutionrelative:islamic_face.api\\controllers\\v1\\authcontroller\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -14,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -59,19 +54,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "D:\\04-GitHub Repos\\Islamic-Face\\Islamic_Face.API\\Controllers\\v1\\AuthController\\AuthController.cs",
-              "RelativeDocumentMoniker": "Islamic_Face.API\\Controllers\\v1\\AuthController\\AuthController.cs",
-              "ToolTip": "D:\\04-GitHub Repos\\Islamic-Face\\Islamic_Face.API\\Controllers\\v1\\AuthController\\AuthController.cs",
-              "RelativeToolTip": "Islamic_Face.API\\Controllers\\v1\\AuthController\\AuthController.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAqwCAAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-21T22:11:41.524Z",
-              "EditorCaption": ""
             }
           ]
         }

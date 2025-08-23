@@ -13,19 +13,19 @@ namespace IslamicFace.Infrastructure.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "Name", "NormalizedName", "ConcurrencyStamp" },
-                values: new object[] { Guid.NewGuid().ToString(), UserTypes.RootAdmin.ToString(), UserTypes.RootAdmin.ToString().ToUpper(), Guid.NewGuid().ToString() }
+                values: new object[] { Guid.NewGuid().ToString(), UserRole.RootAdmin.ToString(), UserRole.RootAdmin.ToString().ToUpper(), Guid.NewGuid().ToString() }
             );
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "Name", "NormalizedName", "ConcurrencyStamp" },
-                values: new object[] { Guid.NewGuid().ToString(), UserTypes.Admin.ToString(), UserTypes.Admin.ToString().ToUpper(), Guid.NewGuid().ToString() }
+                values: new object[] { Guid.NewGuid().ToString(), UserRole.Admin.ToString(), UserRole.Admin.ToString().ToUpper(), Guid.NewGuid().ToString() }
             );
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "Name", "NormalizedName", "ConcurrencyStamp" },
-                values: new object[] { Guid.NewGuid().ToString(), UserTypes.User.ToString(), UserTypes.User.ToString().ToUpper(), Guid.NewGuid().ToString() }
+                values: new object[] { Guid.NewGuid().ToString(), UserRole.User.ToString(), UserRole.User.ToString().ToUpper(), Guid.NewGuid().ToString() }
             );
         }
 

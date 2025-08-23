@@ -5,9 +5,12 @@ public enum ErrorType
     Failure = 0,
     Validation,
     Problem ,
-    NotFound ,
-    Conflict,
     ConfirmEmailError,
     Delete,
-    Create
+    Create,
+    InternalServer = 500,
+    BadRequest = 400,
+    NotFound = 404,
+    Conflict = 409,
+    Unauthorized = 401,
 }

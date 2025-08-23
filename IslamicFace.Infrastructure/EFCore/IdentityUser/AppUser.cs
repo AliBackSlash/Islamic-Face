@@ -13,7 +13,7 @@ public class AppUser : IdentityUser<Guid>
     public bool gender { get; set; }
     public string? profilePictureURL { get; set; }
     public  string? bio {  get; set; }
-    public UserTypes userType { get; set; }
+    public UserRole userType { get; set; }
     public byte? settingId { get; set; }
 
     public Country? Country { get; set; }

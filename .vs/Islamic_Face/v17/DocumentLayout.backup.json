@@ -3,8 +3,76 @@
   "WorkspaceRootPath": "D:\\04-GitHub Repos\\Islamic-Face\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{C9B42395-52D5-48B8-97C2-5FB3FE1CC654}|Islamic_Face.API\\IslamicFace.Presentation.API.csproj|d:\\04-github repos\\islamic-face\\islamic_face.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{C9B42395-52D5-48B8-97C2-5FB3FE1CC654}|Islamic_Face.API\\IslamicFace.Presentation.API.csproj|solutionrelative:islamic_face.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5206552F-2724-435A-871F-8605D8D2B650}|IslamicFace.Infrastructure\\IslamicFace.Infrastructure.csproj|d:\\04-github repos\\islamic-face\\islamicface.infrastructure\\services\\identityservices\\appuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5206552F-2724-435A-871F-8605D8D2B650}|IslamicFace.Infrastructure\\IslamicFace.Infrastructure.csproj|solutionrelative:islamicface.infrastructure\\services\\identityservices\\appuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A9C900BA-13E6-48DC-B2F9-4BF60A9F267B}|IslamicFace.Application\\IslamicFace.Application.csproj|d:\\04-github repos\\islamic-face\\islamicface.application\\abstractions\\iservices\\identityservices\\iappuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A9C900BA-13E6-48DC-B2F9-4BF60A9F267B}|IslamicFace.Application\\IslamicFace.Application.csproj|solutionrelative:islamicface.application\\abstractions\\iservices\\identityservices\\iappuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A9C900BA-13E6-48DC-B2F9-4BF60A9F267B}|IslamicFace.Application\\IslamicFace.Application.csproj|d:\\04-github repos\\islamic-face\\islamicface.application\\features\\authfeature\\commands\\registercommand\\registercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A9C900BA-13E6-48DC-B2F9-4BF60A9F267B}|IslamicFace.Application\\IslamicFace.Application.csproj|solutionrelative:islamicface.application\\features\\authfeature\\commands\\registercommand\\registercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A9C900BA-13E6-48DC-B2F9-4BF60A9F267B}|IslamicFace.Application\\IslamicFace.Application.csproj|d:\\04-github repos\\islamic-face\\islamicface.application\\features\\authfeature\\commands\\registercommand\\registercommandresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A9C900BA-13E6-48DC-B2F9-4BF60A9F267B}|IslamicFace.Application\\IslamicFace.Application.csproj|solutionrelative:islamicface.application\\features\\authfeature\\commands\\registercommand\\registercommandresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6A1324D-09B4-463B-B823-636790AE70D7}|IslamicFace.Domain\\IslamicFace.Domain.csproj|d:\\04-github repos\\islamic-face\\islamicface.domain\\layer_dtos\\appuser\\response\\loginresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6A1324D-09B4-463B-B823-636790AE70D7}|IslamicFace.Domain\\IslamicFace.Domain.csproj|solutionrelative:islamicface.domain\\layer_dtos\\appuser\\response\\loginresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6A1324D-09B4-463B-B823-636790AE70D7}|IslamicFace.Domain\\IslamicFace.Domain.csproj|d:\\04-github repos\\islamic-face\\islamicface.domain\\enums\\userrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6A1324D-09B4-463B-B823-636790AE70D7}|IslamicFace.Domain\\IslamicFace.Domain.csproj|solutionrelative:islamicface.domain\\enums\\userrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5206552F-2724-435A-871F-8605D8D2B650}|IslamicFace.Infrastructure\\IslamicFace.Infrastructure.csproj|d:\\04-github repos\\islamic-face\\islamicface.infrastructure\\migrations\\20250801090459_seedroles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5206552F-2724-435A-871F-8605D8D2B650}|IslamicFace.Infrastructure\\IslamicFace.Infrastructure.csproj|solutionrelative:islamicface.infrastructure\\migrations\\20250801090459_seedroles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A9C900BA-13E6-48DC-B2F9-4BF60A9F267B}|IslamicFace.Application\\IslamicFace.Application.csproj|d:\\04-github repos\\islamic-face\\islamicface.application\\features\\authfeature\\commands\\logincommand\\logincommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A9C900BA-13E6-48DC-B2F9-4BF60A9F267B}|IslamicFace.Application\\IslamicFace.Application.csproj|solutionrelative:islamicface.application\\features\\authfeature\\commands\\logincommand\\logincommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A9C900BA-13E6-48DC-B2F9-4BF60A9F267B}|IslamicFace.Application\\IslamicFace.Application.csproj|d:\\04-github repos\\islamic-face\\islamicface.application\\features\\authfeature\\commands\\logincommand\\logincommandresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A9C900BA-13E6-48DC-B2F9-4BF60A9F267B}|IslamicFace.Application\\IslamicFace.Application.csproj|solutionrelative:islamicface.application\\features\\authfeature\\commands\\logincommand\\logincommandresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C9B42395-52D5-48B8-97C2-5FB3FE1CC654}|Islamic_Face.API\\IslamicFace.Presentation.API.csproj|d:\\04-github repos\\islamic-face\\islamic_face.api\\controllers\\v1\\authcontroller\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C9B42395-52D5-48B8-97C2-5FB3FE1CC654}|Islamic_Face.API\\IslamicFace.Presentation.API.csproj|solutionrelative:islamic_face.api\\controllers\\v1\\authcontroller\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A9C900BA-13E6-48DC-B2F9-4BF60A9F267B}|IslamicFace.Application\\IslamicFace.Application.csproj|d:\\04-github repos\\islamic-face\\islamicface.application\\features\\authfeature\\commands\\logincommand\\logincommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A9C900BA-13E6-48DC-B2F9-4BF60A9F267B}|IslamicFace.Application\\IslamicFace.Application.csproj|solutionrelative:islamicface.application\\features\\authfeature\\commands\\logincommand\\logincommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6A1324D-09B4-463B-B823-636790AE70D7}|IslamicFace.Domain\\IslamicFace.Domain.csproj|d:\\04-github repos\\islamic-face\\islamicface.domain\\layer_dtos\\appuser\\response\\registerresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6A1324D-09B4-463B-B823-636790AE70D7}|IslamicFace.Domain\\IslamicFace.Domain.csproj|solutionrelative:islamicface.domain\\layer_dtos\\appuser\\response\\registerresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5206552F-2724-435A-871F-8605D8D2B650}|IslamicFace.Infrastructure\\IslamicFace.Infrastructure.csproj|d:\\04-github repos\\islamic-face\\islamicface.infrastructure\\efcore\\identityuser\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5206552F-2724-435A-871F-8605D8D2B650}|IslamicFace.Infrastructure\\IslamicFace.Infrastructure.csproj|solutionrelative:islamicface.infrastructure\\efcore\\identityuser\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A9C900BA-13E6-48DC-B2F9-4BF60A9F267B}|IslamicFace.Application\\IslamicFace.Application.csproj|d:\\04-github repos\\islamic-face\\islamicface.application\\features\\authfeature\\commands\\logincommand\\logincommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A9C900BA-13E6-48DC-B2F9-4BF60A9F267B}|IslamicFace.Application\\IslamicFace.Application.csproj|solutionrelative:islamicface.application\\features\\authfeature\\commands\\logincommand\\logincommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A9C900BA-13E6-48DC-B2F9-4BF60A9F267B}|IslamicFace.Application\\IslamicFace.Application.csproj|d:\\04-github repos\\islamic-face\\islamicface.application\\features\\authfeature\\commands\\registercommand\\registercommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A9C900BA-13E6-48DC-B2F9-4BF60A9F267B}|IslamicFace.Application\\IslamicFace.Application.csproj|solutionrelative:islamicface.application\\features\\authfeature\\commands\\registercommand\\registercommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A9C900BA-13E6-48DC-B2F9-4BF60A9F267B}|IslamicFace.Application\\IslamicFace.Application.csproj|d:\\04-github repos\\islamic-face\\islamicface.application\\features\\authfeature\\commands\\registercommand\\registercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A9C900BA-13E6-48DC-B2F9-4BF60A9F267B}|IslamicFace.Application\\IslamicFace.Application.csproj|solutionrelative:islamicface.application\\features\\authfeature\\commands\\registercommand\\registercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C9B42395-52D5-48B8-97C2-5FB3FE1CC654}|Islamic_Face.API\\IslamicFace.Presentation.API.csproj|d:\\04-github repos\\islamic-face\\islamic_face.api\\controllers\\v1\\authcontroller\\dtos\\registermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C9B42395-52D5-48B8-97C2-5FB3FE1CC654}|Islamic_Face.API\\IslamicFace.Presentation.API.csproj|solutionrelative:islamic_face.api\\controllers\\v1\\authcontroller\\dtos\\registermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -63,14 +131,235 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "D:\\04-GitHub Repos\\Islamic-Face\\Islamic_Face.API\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "Islamic_Face.API\\Properties\\launchSettings.json",
+              "ToolTip": "D:\\04-GitHub Repos\\Islamic-Face\\Islamic_Face.API\\Properties\\launchSettings.json",
+              "RelativeToolTip": "Islamic_Face.API\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-08-23T12:03:13.084Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UserRole.cs",
+              "DocumentMoniker": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Domain\\Enums\\UserRole.cs",
+              "RelativeDocumentMoniker": "IslamicFace.Domain\\Enums\\UserRole.cs",
+              "ToolTip": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Domain\\Enums\\UserRole.cs",
+              "RelativeToolTip": "IslamicFace.Domain\\Enums\\UserRole.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-23T12:00:49.138Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "20250801090459_SeedRoles.cs",
+              "DocumentMoniker": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Infrastructure\\Migrations\\20250801090459_SeedRoles.cs",
+              "RelativeDocumentMoniker": "IslamicFace.Infrastructure\\Migrations\\20250801090459_SeedRoles.cs",
+              "ToolTip": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Infrastructure\\Migrations\\20250801090459_SeedRoles.cs",
+              "RelativeToolTip": "IslamicFace.Infrastructure\\Migrations\\20250801090459_SeedRoles.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABpAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-23T12:00:08.091Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "LoginResponseDto.cs",
+              "DocumentMoniker": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Domain\\Layer_Dtos\\AppUser\\response\\LoginResponseDto.cs",
+              "RelativeDocumentMoniker": "IslamicFace.Domain\\Layer_Dtos\\AppUser\\response\\LoginResponseDto.cs",
+              "ToolTip": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Domain\\Layer_Dtos\\AppUser\\response\\LoginResponseDto.cs",
+              "RelativeToolTip": "IslamicFace.Domain\\Layer_Dtos\\AppUser\\response\\LoginResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAABxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-23T11:37:55.957Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "RegisterModel.cs",
+              "DocumentMoniker": "D:\\04-GitHub Repos\\Islamic-Face\\Islamic_Face.API\\Controllers\\v1\\AuthController\\DTOs\\RegisterModel.cs",
+              "RelativeDocumentMoniker": "Islamic_Face.API\\Controllers\\v1\\AuthController\\DTOs\\RegisterModel.cs",
+              "ToolTip": "D:\\04-GitHub Repos\\Islamic-Face\\Islamic_Face.API\\Controllers\\v1\\AuthController\\DTOs\\RegisterModel.cs",
+              "RelativeToolTip": "Islamic_Face.API\\Controllers\\v1\\AuthController\\DTOs\\RegisterModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-23T10:04:05.71Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "AuthController.cs",
               "DocumentMoniker": "D:\\04-GitHub Repos\\Islamic-Face\\Islamic_Face.API\\Controllers\\v1\\AuthController\\AuthController.cs",
               "RelativeDocumentMoniker": "Islamic_Face.API\\Controllers\\v1\\AuthController\\AuthController.cs",
               "ToolTip": "D:\\04-GitHub Repos\\Islamic-Face\\Islamic_Face.API\\Controllers\\v1\\AuthController\\AuthController.cs",
               "RelativeToolTip": "Islamic_Face.API\\Controllers\\v1\\AuthController\\AuthController.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAqwCAAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAABMAAAAAAAAAAAAawCkAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-21T22:11:41.524Z",
+              "WhenOpened": "2025-08-23T10:02:31.11Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IAppUserService.cs",
+              "DocumentMoniker": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Application\\Abstractions\\IServices\\IdentityServices\\IAppUserService.cs",
+              "RelativeDocumentMoniker": "IslamicFace.Application\\Abstractions\\IServices\\IdentityServices\\IAppUserService.cs",
+              "ToolTip": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Application\\Abstractions\\IServices\\IdentityServices\\IAppUserService.cs",
+              "RelativeToolTip": "IslamicFace.Application\\Abstractions\\IServices\\IdentityServices\\IAppUserService.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAgwA4AAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-23T09:51:19.155Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AppUserService.cs",
+              "DocumentMoniker": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Infrastructure\\Services\\IdentityServices\\AppUserService.cs",
+              "RelativeDocumentMoniker": "IslamicFace.Infrastructure\\Services\\IdentityServices\\AppUserService.cs",
+              "ToolTip": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Infrastructure\\Services\\IdentityServices\\AppUserService.cs",
+              "RelativeToolTip": "IslamicFace.Infrastructure\\Services\\IdentityServices\\AppUserService.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAowKYAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-23T09:28:41.727Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "LoginCommandValidator.cs",
+              "DocumentMoniker": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Application\\Features\\AuthFeature\\Commands\\LoginCommand\\LoginCommandValidator.cs",
+              "RelativeDocumentMoniker": "IslamicFace.Application\\Features\\AuthFeature\\Commands\\LoginCommand\\LoginCommandValidator.cs",
+              "ToolTip": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Application\\Features\\AuthFeature\\Commands\\LoginCommand\\LoginCommandValidator.cs",
+              "RelativeToolTip": "IslamicFace.Application\\Features\\AuthFeature\\Commands\\LoginCommand\\LoginCommandValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAABdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-23T09:15:03.859Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "LoginCommandHandler.cs",
+              "DocumentMoniker": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Application\\Features\\AuthFeature\\Commands\\LoginCommand\\LoginCommandHandler.cs",
+              "RelativeDocumentMoniker": "IslamicFace.Application\\Features\\AuthFeature\\Commands\\LoginCommand\\LoginCommandHandler.cs",
+              "ToolTip": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Application\\Features\\AuthFeature\\Commands\\LoginCommand\\LoginCommandHandler.cs",
+              "RelativeToolTip": "IslamicFace.Application\\Features\\AuthFeature\\Commands\\LoginCommand\\LoginCommandHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-23T09:15:03.165Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "RegisterCommandValidator.cs",
+              "DocumentMoniker": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Application\\Features\\AuthFeature\\Commands\\RegisterCommand\\RegisterCommandValidator.cs",
+              "RelativeDocumentMoniker": "IslamicFace.Application\\Features\\AuthFeature\\Commands\\RegisterCommand\\RegisterCommandValidator.cs",
+              "ToolTip": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Application\\Features\\AuthFeature\\Commands\\RegisterCommand\\RegisterCommandValidator.cs",
+              "RelativeToolTip": "IslamicFace.Application\\Features\\AuthFeature\\Commands\\RegisterCommand\\RegisterCommandValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-23T09:12:54.401Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "RegisterCommandResponse.cs",
+              "DocumentMoniker": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Application\\Features\\AuthFeature\\Commands\\RegisterCommand\\RegisterCommandResponse.cs",
+              "RelativeDocumentMoniker": "IslamicFace.Application\\Features\\AuthFeature\\Commands\\RegisterCommand\\RegisterCommandResponse.cs",
+              "ToolTip": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Application\\Features\\AuthFeature\\Commands\\RegisterCommand\\RegisterCommandResponse.cs",
+              "RelativeToolTip": "IslamicFace.Application\\Features\\AuthFeature\\Commands\\RegisterCommand\\RegisterCommandResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-23T09:12:56.135Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RegisterCommandHandler.cs",
+              "DocumentMoniker": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Application\\Features\\AuthFeature\\Commands\\RegisterCommand\\RegisterCommandHandler.cs",
+              "RelativeDocumentMoniker": "IslamicFace.Application\\Features\\AuthFeature\\Commands\\RegisterCommand\\RegisterCommandHandler.cs",
+              "ToolTip": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Application\\Features\\AuthFeature\\Commands\\RegisterCommand\\RegisterCommandHandler.cs",
+              "RelativeToolTip": "IslamicFace.Application\\Features\\AuthFeature\\Commands\\RegisterCommand\\RegisterCommandHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-23T09:03:19.715Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "LoginCommand.cs",
+              "DocumentMoniker": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Application\\Features\\AuthFeature\\Commands\\LoginCommand\\LoginCommand.cs",
+              "RelativeDocumentMoniker": "IslamicFace.Application\\Features\\AuthFeature\\Commands\\LoginCommand\\LoginCommand.cs",
+              "ToolTip": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Application\\Features\\AuthFeature\\Commands\\LoginCommand\\LoginCommand.cs",
+              "RelativeToolTip": "IslamicFace.Application\\Features\\AuthFeature\\Commands\\LoginCommand\\LoginCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAABkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-23T10:03:46.317Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "AppUser.cs",
+              "DocumentMoniker": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Infrastructure\\EFCore\\IdentityUser\\AppUser.cs",
+              "RelativeDocumentMoniker": "IslamicFace.Infrastructure\\EFCore\\IdentityUser\\AppUser.cs",
+              "ToolTip": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Infrastructure\\EFCore\\IdentityUser\\AppUser.cs",
+              "RelativeToolTip": "IslamicFace.Infrastructure\\EFCore\\IdentityUser\\AppUser.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAIwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-23T11:03:14.175Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "RegisterResponseDto.cs",
+              "DocumentMoniker": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Domain\\Layer_Dtos\\AppUser\\response\\RegisterResponseDto.cs",
+              "RelativeDocumentMoniker": "IslamicFace.Domain\\Layer_Dtos\\AppUser\\response\\RegisterResponseDto.cs",
+              "ToolTip": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Domain\\Layer_Dtos\\AppUser\\response\\RegisterResponseDto.cs",
+              "RelativeToolTip": "IslamicFace.Domain\\Layer_Dtos\\AppUser\\response\\RegisterResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-23T11:04:02.73Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "LoginCommandResponse.cs",
+              "DocumentMoniker": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Application\\Features\\AuthFeature\\Commands\\LoginCommand\\LoginCommandResponse.cs",
+              "RelativeDocumentMoniker": "IslamicFace.Application\\Features\\AuthFeature\\Commands\\LoginCommand\\LoginCommandResponse.cs",
+              "ToolTip": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Application\\Features\\AuthFeature\\Commands\\LoginCommand\\LoginCommandResponse.cs",
+              "RelativeToolTip": "IslamicFace.Application\\Features\\AuthFeature\\Commands\\LoginCommand\\LoginCommandResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-23T11:38:29.765Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "RegisterCommand.cs",
+              "DocumentMoniker": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Application\\Features\\AuthFeature\\Commands\\RegisterCommand\\RegisterCommand.cs",
+              "RelativeDocumentMoniker": "IslamicFace.Application\\Features\\AuthFeature\\Commands\\RegisterCommand\\RegisterCommand.cs",
+              "ToolTip": "D:\\04-GitHub Repos\\Islamic-Face\\IslamicFace.Application\\Features\\AuthFeature\\Commands\\RegisterCommand\\RegisterCommand.cs",
+              "RelativeToolTip": "IslamicFace.Application\\Features\\AuthFeature\\Commands\\RegisterCommand\\RegisterCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-23T09:12:55.882Z",
               "EditorCaption": ""
             }
           ]

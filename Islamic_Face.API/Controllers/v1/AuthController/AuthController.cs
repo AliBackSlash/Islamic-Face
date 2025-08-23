@@ -1,4 +1,5 @@
-﻿using IslamicFace.Application.Features.AuthFeature.Commands;
+﻿using IslamicFace.Application.Features.AuthFeature.Commands.LoginCommand;
+using IslamicFace.Application.Features.AuthFeature.Commands.RegisterCommand;
 using IslamicFace.Domain.Abstractions.IServices;
 using IslamicFace.Domain.ErrorHandleClasses;
 using IslamicFace.Infrastructure.Services.EmailServices;
@@ -12,24 +13,30 @@ namespace IslamicFace.Presentation.API.Controllers.v1.AuthController
 {
     [Route("api/Auth")]
     [ApiController]
+    [AllowAnonymous]
     public class AuthController(ISender _sender,IEmailService emailService,IConfiguration _config ) : ControllerBase
     {
-        [AllowAnonymous]
+
         [HttpPost("Register")]
         [ProducesResponseType<RegisterCommandResponse>(StatusCodes.Status200OK)]
         [ProducesResponseType<IEnumerable<Error>>(StatusCodes.Status400BadRequest)]
         [ProducesResponseType<IEnumerable<Error>>(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> RegisterAsync(RegisterModel request)
+        public async Task<IActionResult> RegisterAsync([FromBody] RegisterModel request)
         {
             Result<RegisterCommandResponse> result = await _sender.Send(new RegisterCommand(request.Email, request.UserName, request.Password));
 
-            if (result.IsSuccess)
-                return Ok(result);
+            return result.ToActionResult();
+        }
 
-            if (result.Errors.FirstOrDefault().Type == ErrorType.Validation)
-                return BadRequest(result.Errors);
+        [HttpPost("Login")]
+        [ProducesResponseType<RegisterCommandResponse>(StatusCodes.Status200OK)]
+        [ProducesResponseType<IEnumerable<Error>>(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType<IEnumerable<Error>>(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> LoginAsync([FromBody]LoginModel request)
+        {
+            Result<LoginCommandResponse> result = await _sender.Send(new LoginCommand(request.UserNameOrEmail,request.Password));
 
-            return StatusCode(500, result.Errors);
+            return result.ToActionResult();
         }
     }
 }

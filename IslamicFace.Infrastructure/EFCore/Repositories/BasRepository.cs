@@ -33,11 +33,11 @@ public class BasRepository<TEntity, IdType> : IBasRepository<TEntity, IdType> wh
         }
         catch (ValidationException ex)
         {
-            return Result.Failure<int>(Error.Validation("Validation.Error", ex.Message));
+            return Result.Failure<int>(Error.Conflict("Validation.Error", ex.Message));
         }
         catch (Exception ex)
         {
-            return Result.Failure<int>(Error.Problem("Unknown.Error", ex.Message));
+            return Result.Failure<int>(Error.InternalServer("Unknown.Error", ex.Message));
         }
     }
     public async Task<PagedResult<TEntity>> GetPagedAsync(IQueryable<TEntity> query, PaginationParams paginationParams, CancellationToken cancellationToken = default)

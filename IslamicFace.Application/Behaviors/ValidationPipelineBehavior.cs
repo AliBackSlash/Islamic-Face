@@ -53,16 +53,16 @@ public class ValidationPipelineBehavior<TRequest, TResponse>(
         ValidationResult[] validationResults = await Task.WhenAll(
             validators.Select(validator => validator.ValidateAsync(context))).ConfigureAwait(false);
 
-        ValidationFailure[] validationFailures = validationResults
+        return validationResults
             .Where(validationResult => !validationResult.IsValid)
             .SelectMany(validationResult => validationResult.Errors)
             .ToArray();
 
-        return validationFailures;
     }
 
     private static IEnumerable<Error> CreateValidationError(ValidationFailure[] validationFailures)
     {
-        return validationFailures.Select(f => Error.Validation(f.PropertyName, f.ErrorMessage));
+        return validationFailures.Select(f => Error.BadRequest(f.PropertyName, f.ErrorMessage));
     }
 }
+

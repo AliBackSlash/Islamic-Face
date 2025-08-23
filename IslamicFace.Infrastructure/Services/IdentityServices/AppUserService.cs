@@ -14,7 +14,7 @@ using System.Threading;
 using System.Web;
 
 namespace IslamicFace.Infrastructure.Services.IdentityServices;
-public class AppUserService(UserManager<AppUser> _userManager,JWT _jwt,IEmailService emailService) : IAppUserService
+public class AppUserService(UserManager<AppUser> _userManager,JWT _jwt) : IAppUserService
 {
 
     public async Task<Result<RegisterResponseDto>> RegisterCredentialAsync(RegisterUserDto reg_info, CancellationToken cancellationToken)
@@ -30,63 +30,103 @@ public class AppUserService(UserManager<AppUser> _userManager,JWT _jwt,IEmailSer
         if (!createResult.Succeeded)
             return Result.Failure<RegisterResponseDto>(new Error("Create Errors", string.Join(", ", createResult.Errors.Select(e => e.Description)), ErrorType.Create));
 
-        var jwtSecurityToken = await CreateJWTToken(user);
+        var Token = await CreateJWTToken(user);
 
-        return Result.Success(new RegisterResponseDto(user.Id,new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken)));
+        return Result.Success(new RegisterResponseDto(user.Id, await CreateJWTToken(user)));
     }
-    public async Task<JwtSecurityToken> CreateJWTToken(AppUser appUser)
+    private async Task<string> CreateJWTToken(AppUser appUser)
     {
         var userClaims = await _userManager.GetClaimsAsync(appUser);
         var roles = await _userManager.GetRolesAsync(appUser);
-        var roleClaims = new List<Claim>();
+        var roleClaims = roles.Select(r => new Claim("roles", r)).ToList();
 
-        foreach (var role in roles)
-            roleClaims.Add(new Claim("roles", role));
+        var claims = new List<Claim>
+    {
+        new Claim(JwtRegisteredClaimNames.Sub, appUser.UserName ?? ""),
+        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+        new Claim(JwtRegisteredClaimNames.Email, appUser.Email ?? ""),
+        new Claim(JwtRegisteredClaimNames.UniqueName, appUser.UserName ?? ""),
+        new Claim("UType", appUser.userType.ToString()),
+        new Claim("uid", appUser.Id.ToString())
+    };
 
-        var claims = new[]
-        {
-             new Claim(JwtRegisteredClaimNames.Sub,appUser.UserName),
-             new Claim(JwtRegisteredClaimNames.Jti,Guid.NewGuid().ToString()),
-             new Claim(JwtRegisteredClaimNames.Email,appUser.Email ?? ""),
-             new Claim(JwtRegisteredClaimNames.UniqueName,appUser.UserName),
-             new Claim(JwtRegisteredClaimNames.Exp,DateTime.Now.AddMinutes(_jwt.Duration).ToString()),
-             new Claim("UType",appUser.userType.ToString()),
+        claims.AddRange(userClaims);
+        claims.AddRange(roleClaims);
 
-             new Claim("uid",appUser.Id.ToString()),
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwt.SigningKey));
+        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-        }.Union(userClaims)
-         .Union(roleClaims);
-
-        var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwt.SigningKey));
-        var SigningCredentials = new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256);
-
-        return new JwtSecurityToken(
+        var token = new JwtSecurityToken(
             issuer: _jwt.Issuer,
             audience: _jwt.Audience,
             claims: claims,
             expires: DateTime.UtcNow.AddMinutes(_jwt.Duration),
-            signingCredentials: SigningCredentials
-            );
+            signingCredentials: creds
+        );
 
+        return new JwtSecurityTokenHandler().WriteToken(token);
+    }
+    private Task<(string? Email, string? UserName, List<string> Roles, DateTime Expiration)> GetInfoFromToken(string token)
+    {
+        var handler = new JwtSecurityTokenHandler();
+        var jwtToken = handler.ReadJwtToken(token);
 
+        var userName = jwtToken.Claims
+            .FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.UniqueName)?.Value;
+
+        var email = jwtToken.Claims
+            .FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Email)?.Value;
+
+        var roles = jwtToken.Claims
+            .Where(c => c.Type == "roles")
+            .Select(c => c.Value)
+            .ToList();
+
+        var expiration = jwtToken.ValidTo;
+
+        return Task.FromResult((email, userName, roles, expiration));
+    }
+    public async Task<Result<LoginResponseDto>> LoginAsync(LoginDto dto, CancellationToken cancellationToken)
+    {
+        var user = await _userManager.FindByEmailAsync(dto.UserNameOrEmail);
+        if (user is not null)
+        {
+            string token = await CreateJWTToken(user);
+            var tokenInfo = await GetInfoFromToken(token);
+            return Result.Success(new LoginResponseDto(token,tokenInfo.Email,tokenInfo.UserName,tokenInfo.Roles,tokenInfo.Expiration));
+        }
+
+        user = await _userManager.FindByNameAsync(dto.UserNameOrEmail);
+        if (user is not null)
+            if (await _userManager.CheckPasswordAsync(user, dto.Password!))
+            {
+                string token = await CreateJWTToken(user);
+                var tokenInfo = await GetInfoFromToken(token);
+                return Result.Success(new LoginResponseDto(token, tokenInfo.Email, tokenInfo.UserName, tokenInfo.Roles, tokenInfo.Expiration));
+            }
+
+        return Result.Failure<LoginResponseDto>(new Error("Wrong Credentials", "Invalid UserName Or Password", ErrorType.NotFound));
     }
     public Task<Result<AddReminderInfoForUserResponseDto>> AddReminderInfoForUserAsync(AddReminderInfoForUserDto dto, CancellationToken cancellationToken)
     {
         throw new NotImplementedException();
     }
-    public Task<Result<string>> LoginAsync(LoginDto dto, CancellationToken cancellationToken)
+    public async Task<Result> ConfirmEmailAsync(Guid userId, string token, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
-    }
-    public Task<Result> ConfirmEmailAsync(Guid userId, string token, CancellationToken cancellationToken)
-    {
-        throw new NotImplementedException();
+        var user = await _userManager.FindByIdAsync(userId.ToString());
+        if (user is null)
+            Result.Failure(Error.NotFound("Not Found", $"User with id {userId} not found"));
+           
+        var ConfirmResult = await _userManager.ConfirmEmailAsync(user!, token);
+        if (!ConfirmResult.Succeeded)
+            return Result.Failure<RegisterResponseDto>(new Error("Create Errors", string.Join(", ", ConfirmResult.Errors.Select(e => e.Description)), ErrorType.Create));
+
+        return Result.Success();
     }
     public async Task<Result<bool>> IsEmailNotTakenAsync(string email)
     {
         if (await _userManager.FindByEmailAsync(email) is not null)
             return Result.Failure<bool>(new Error("Validation error", "Invalid UserName Or Email", ErrorType.Validation));
-
         return Result.Success(true);
     }
     public async Task<Result<bool>> IsUserNameNotTakenAsync(string userName)
@@ -96,13 +136,13 @@ public class AppUserService(UserManager<AppUser> _userManager,JWT _jwt,IEmailSer
 
         return Result.Success(true);
     }
-    public async Task<Result> AddUserToRoleAsync(Guid userId, string role)
+    public async Task<Result> AddUserToRoleAsync(Guid userId, UserRole role)
     {
         AppUser? user = await _userManager.FindByIdAsync(userId.ToString());
         if (user == null)
             return Result.Failure(new Error("(Add Role) User Not Found", "", ErrorType.NotFound));
 
-        var roleResult = await _userManager.AddToRoleAsync(user, "User");
+        var roleResult = await _userManager.AddToRoleAsync(user, role.ToString());
         if (!roleResult.Succeeded)
         {
             await _userManager.DeleteAsync(user);
@@ -139,3 +179,4 @@ public class AppUserService(UserManager<AppUser> _userManager,JWT _jwt,IEmailSer
         return Result.Failure<bool>(new Error("(Delete User) Errors", string.Join(", ", deleteResult.Errors.Select(e => e.Description)), ErrorType.Delete));
     }
 }
+
