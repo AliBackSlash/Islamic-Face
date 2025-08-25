@@ -18,9 +18,15 @@ builder.Services.AddOpenApi();
 builder.Services.AddIdentity<AppUser, IdentityRole<Guid>>(options =>
 {
     options.SignIn.RequireConfirmedEmail = true;
+   
 })
 .AddEntityFrameworkStores<AppDbContext>()
 .AddDefaultTokenProviders();
+
+builder.Services.Configure<DataProtectionTokenProviderOptions>(options =>
+{
+    options.TokenLifespan = TimeSpan.FromHours(1);
+});
 
 builder.Services.AddDbContext<AppDbContext>(bl => bl.UseSqlServer(
     builder.Configuration.GetConnectionString("DefaultConnection"),
