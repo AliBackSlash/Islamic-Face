@@ -29,7 +29,6 @@
     <Folder Include="Features\AuthFeature\Queries\" />
     <Folder Include="Features\AdminFolder\" />
     <Folder Include="Features\RootAdminFolder\" />
-    <Folder Include="Features\UserFolder\" />
   </ItemGroup>
 
 </Project>

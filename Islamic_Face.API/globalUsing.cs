@@ -8,3 +8,8 @@ global using Microsoft.AspNetCore.Mvc;
 global using IslamicFace.Domain.JWT;
 global using Microsoft.AspNetCore.Identity;
 global using IslamicFace.Infrastructure.EFCore.IdentityUser;
+global using IslamicFace.Application.Features.AuthFeature.Commands.ConfirmEmailCommand;
+global using IslamicFace.Application.Features.AuthFeature.Commands.ResetPasswordCommand;
+global using IslamicFace.Domain.ErrorHandleClasses;
+global using IslamicFace.Presentation.API.Controllers.v1.AuthController.DTOs;
+global using MediatR;

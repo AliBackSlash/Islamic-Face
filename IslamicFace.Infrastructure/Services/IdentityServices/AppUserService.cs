@@ -1,5 +1,5 @@
 ﻿namespace IslamicFace.Infrastructure.Services.IdentityServices;
-public class AppUserService(UserManager<AppUser> _userManager,JWT _jwt) : IAppUserService
+public class AppUserService(UserManager<AppUser> _userManager, JWT _jwt) : IAppUserService
 {
 
     public async Task<Result<RegisterResponseDto>> RegisterCredentialAsync(RegisterUserDto reg_info, CancellationToken cancellationToken)
@@ -91,26 +91,29 @@ public class AppUserService(UserManager<AppUser> _userManager,JWT _jwt) : IAppUs
             return Result.Failure<string>(new Error("Invalid Token", $"Message: {ex}", ErrorType.Validation));
         }
     }
+   
     public async Task<Result<LoginResponseDto>> LoginAsync(LoginDto dto, CancellationToken cancellationToken)
     {
-        var user = await _userManager.FindByEmailAsync(dto.UserNameOrEmail);
-        if (user is not null)
+        var user = await _userManager.FindByEmailAsync(dto.UserNameOrEmail)
+                   ?? await _userManager.FindByNameAsync(dto.UserNameOrEmail);
+
+        if (user is null)
+            return Result.Failure<LoginResponseDto>(
+             new Error("User.InvalidCredentials", "Invalid username or password", ErrorType.Unauthorized));            
+
+        if (!await _userManager.IsEmailConfirmedAsync(user))
+            return Result.Failure<LoginResponseDto>(
+                new Error("User.EmailNotConfirmed", "You must confirm your email before logging in", ErrorType.Unauthorized));
+
+        if (await _userManager.CheckPasswordAsync(user, dto.Password!))
         {
             string token = await _CreateJWTToken(user);
             var tokenInfo = await _GetInfoFromToken(token);
-            return Result.Success(new LoginResponseDto(token,tokenInfo.Email,tokenInfo.UserName,tokenInfo.Roles,tokenInfo.Expiration));
+            return Result.Success(new LoginResponseDto(token, tokenInfo.Email!, tokenInfo.UserName!, tokenInfo.Roles, tokenInfo.Expiration));
         }
 
-        user = await _userManager.FindByNameAsync(dto.UserNameOrEmail);
-        if (user is not null)
-            if (await _userManager.CheckPasswordAsync(user, dto.Password!))
-            {
-                string token = await _CreateJWTToken(user);
-                var tokenInfo = await _GetInfoFromToken(token);
-                return Result.Success(new LoginResponseDto(token, tokenInfo.Email, tokenInfo.UserName, tokenInfo.Roles, tokenInfo.Expiration));
-            }
-
-        return Result.Failure<LoginResponseDto>(new Error("Wrong Credentials", "Invalid UserName Or Password", ErrorType.NotFound));
+        return Result.Failure<LoginResponseDto>(
+            new Error("User.InvalidCredentials", "Invalid username or password", ErrorType.Unauthorized));
     }
     public Task<Result<AddReminderInfoForUserResponseDto>> AddReminderInfoForUserAsync(AddReminderInfoForUserDto dto, CancellationToken cancellationToken)
     {
@@ -204,13 +207,13 @@ public class AppUserService(UserManager<AppUser> _userManager,JWT _jwt) : IAppUs
             var ChangeResult = await _userManager.ResetPasswordAsync(user, Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(token)), Password);
 
             if (!ChangeResult.Succeeded)
-                return Result.Failure<string>(new Error("Change password Errors", string.Join(", ", ChangeResult.Errors.Select(e => e.Description)), ErrorType.Create));
+                return Result.Failure<string>(new Error("Reset password Errors", string.Join(", ", ChangeResult.Errors.Select(e => e.Description)), ErrorType.Create));
 
             return Result.Success(await _CreateJWTToken(user));
         }
         catch (Exception  ex)
         {
-            return Result.Failure<string>(new Error("Change password Error", ex.Message, ErrorType.Validation));
+            return Result.Failure<string>(new Error("Reset password Error", ex.Message, ErrorType.Validation));
         }
 
     }
@@ -229,9 +232,25 @@ public class AppUserService(UserManager<AppUser> _userManager,JWT _jwt) : IAppUs
 
         return Result.Success($"https://localhost:7145/confirm-email?userId={user.Id}&token={encodedToken}");
     }
-    public Task<Result<string>> ChangePasswordAsync(string Email,string CurrentPassword, string Password)
+    public async Task<Result<string>> ChangePasswordAsync(string Id,string CurrentPassword, string Password)
     {
-        throw new NotImplementedException();
+        var user = await _userManager.FindByIdAsync(Id);
+        if (user is null)
+            return Result.Failure<string>(Error.NotFound("Not Found", $"User with Id {Id} not found"));
+
+        try
+        {
+            var ChangeResult = await _userManager.ChangePasswordAsync(user, CurrentPassword, Password);
+
+            if (!ChangeResult.Succeeded)
+                return Result.Failure<string>(new Error("Change password Errors", string.Join(", ", ChangeResult.Errors.Select(e => e.Description)), ErrorType.Create));
+
+            return Result.Success(await _CreateJWTToken(user));
+        }
+        catch (Exception ex)
+        {
+            return Result.Failure<string>(new Error("Change password Error", ex.Message, ErrorType.Validation));
+        }
     }
 
 }

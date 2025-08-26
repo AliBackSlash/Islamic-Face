@@ -10,7 +10,7 @@ public interface IAppUserService
     Task<Result<AddReminderInfoForUserResponseDto>> AddReminderInfoForUserAsync(AddReminderInfoForUserDto dto, CancellationToken cancellationToken);
     Task<Result<LoginResponseDto>> LoginAsync(LoginDto dto, CancellationToken cancellationToken);
     Task<Result<string>> ConfirmEmailAsync(string userId, string token);
-    Task<Result<string>> ChangePasswordAsync(string Email, string CurrentPassword, string Password);
+    Task<Result<string>> ChangePasswordAsync(string Id, string CurrentPassword, string Password);
     Task<Result<bool>> IsEmailNotTakenAsync(string email);
     Task<Result<bool>> IsUserNameNotTakenAsync(string userName);
     Task<Result> AddUserToRoleAsync(Guid userId, UserRole role);
