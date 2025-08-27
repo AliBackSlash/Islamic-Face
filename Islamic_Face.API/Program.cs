@@ -1,6 +1,7 @@
 #region Initialize builder
 
 
+using IslamicFace.Presentation.API.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -35,6 +36,7 @@ builder.Services.AddDbContext<AppDbContext>(bl => bl.UseSqlServer(
     ));
 
 #endregion
+builder.Services.AddHttpContextAccessor();
 
 #region Configer JWT Bearer
 var JWTValues = builder.Configuration.GetSection("JWT").Get<JWT>();
@@ -62,6 +64,7 @@ builder.Services.AddAuthentication(op =>
 #endregion
 
 builder.Configuration.GetSection("JWT").Get<JWT>();
+builder.Services.AddScoped<IFileService, FileService>();
 
 #region Call Registers class
 builder.Services.AddApiLayerServices();
@@ -82,11 +85,10 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
     app.UseSwaggerUI(options => options.SwaggerEndpoint("/openapi/v1.json", "v1"));
 }
-
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
-
 app.MapControllers();
+app.UseStaticFiles();
 
 app.Run();

@@ -7,7 +7,7 @@ namespace IslamicFace.Application.Abstractions.IServices.IdentityServices;
 public interface IAppUserService
 {
     Task<Result<RegisterResponseDto>> RegisterCredentialAsync(RegisterUserDto dto, CancellationToken cancellationToken);
-    Task<Result<AddReminderInfoForUserResponseDto>> AddReminderInfoForUserAsync(AddReminderInfoForUserDto dto, CancellationToken cancellationToken);
+    Task<Result<UpdateTheRestOfTheUser_DataResponseDto>> UpdateTheRestOfTheUser_DataAsync(AddTheRestOfTheUser_DataForUserDto dto);
     Task<Result<LoginResponseDto>> LoginAsync(LoginDto dto, CancellationToken cancellationToken);
     Task<Result<string>> ConfirmEmailAsync(string userId, string token);
     Task<Result<string>> ChangePasswordAsync(string Id, string CurrentPassword, string Password);

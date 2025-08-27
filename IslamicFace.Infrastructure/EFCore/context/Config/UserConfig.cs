@@ -16,9 +16,14 @@
 
            
 
-            builder.Property(x => x.name)
-                .HasColumnType("VARCHAR")
-                .HasMaxLength(40)
+            builder.Property(x => x.fName)
+                .HasColumnType("NVARCHAR")
+                .HasMaxLength(50)
+                .IsRequired(false);
+
+            builder.Property(x => x.lName)
+                .HasColumnType("NVARCHAR")
+                .HasMaxLength(50)
                 .IsRequired(false);
 
             builder.Property(x => x.profilePictureURL)
@@ -30,7 +35,7 @@
                 .HasColumnType("Int");
 
             builder.Property(x => x.bio)
-                .HasColumnType("VARCHAR")
+                .HasColumnType("NVARCHAR")
                 .HasMaxLength(160)
                 .IsRequired(false);
 
@@ -44,9 +49,6 @@
                 .HasColumnType("DateTime")
                 .HasDefaultValueSql("GETUTCDATE()")
                 .IsRequired();
-           
-            builder.Property(x => x.userType)
-                .HasColumnType("TinyInt");
 
             //One  to One
             //User => Country

@@ -1,4 +1,7 @@
-﻿namespace IslamicFace.Infrastructure.Services.IdentityServices;
+﻿using IslamicFace.Domain.Entities;
+using static IslamicFace.Domain.ErrorHandleClasses.ErrorCodes;
+
+namespace IslamicFace.Infrastructure.Services.IdentityServices;
 public class AppUserService(UserManager<AppUser> _userManager, JWT _jwt) : IAppUserService
 {
 
@@ -32,7 +35,6 @@ public class AppUserService(UserManager<AppUser> _userManager, JWT _jwt) : IAppU
         new Claim(JwtRegisteredClaimNames.Email, appUser.Email ?? ""),
         new Claim(JwtRegisteredClaimNames.UniqueName, appUser.UserName ?? ""),
         new Claim(JwtRegisteredClaimNames.NameId, appUser.Id.ToString()),
-        new Claim("UType", appUser.userType.ToString()),
     };
 
         claims.AddRange(userClaims);
@@ -115,9 +117,30 @@ public class AppUserService(UserManager<AppUser> _userManager, JWT _jwt) : IAppU
         return Result.Failure<LoginResponseDto>(
             new Error("User.InvalidCredentials", "Invalid username or password", ErrorType.Unauthorized));
     }
-    public Task<Result<AddReminderInfoForUserResponseDto>> AddReminderInfoForUserAsync(AddReminderInfoForUserDto dto, CancellationToken cancellationToken)
+    public async Task<Result<UpdateTheRestOfTheUser_DataResponseDto>> UpdateTheRestOfTheUser_DataAsync(AddTheRestOfTheUser_DataForUserDto dto)
     {
-        throw new NotImplementedException();
+        AppUser? user = await _userManager.FindByIdAsync(dto.Id);
+        if (user is null)
+            return Result.Failure<UpdateTheRestOfTheUser_DataResponseDto>(Error.NotFound("Not Found", $"User with id {dto.Id} not found"));
+
+        user.fName = dto.fName;
+        user.lName = dto.lName;
+        user.countryID = dto.countryID;
+        user.cityID = dto.cityID;
+        user.dateOfBirth = dto.dateOfBirth;
+        user.gender = dto.gender;
+        user.profilePictureURL = dto.profilePictureURL;
+        user.bio = dto.bio;
+        user.settingId = dto.settingId;
+        user.PhoneNumber = dto?.PhoneNumber;
+        
+
+        var createResult = await _userManager.UpdateAsync(user);
+        if (!createResult.Succeeded)
+            return Result.Failure<UpdateTheRestOfTheUser_DataResponseDto>(new Error("Create Errors", string.Join(", ", createResult.Errors.Select(e => e.Description)), ErrorType.Create));
+
+        return Result.Success(new UpdateTheRestOfTheUser_DataResponseDto(user.Id, user. fName, user.lName, user.countryID, user.cityID,
+    user.dateOfBirth, user.gender, user.profilePictureURL, user.bio, user.PhoneNumber, user.settingId));
     }
     public async Task<Result<string>> ConfirmEmailAsync(string userId,string token)
     {

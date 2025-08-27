@@ -57,7 +57,7 @@ namespace IslamicFace.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<byte>(type: "TinyInt", nullable: false),
-                    GenderOfFriends = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    GenderOfFriends = table.Column<string>(type: "nvarchar(6)", nullable: false)
                 },
                 constraints: table =>
                 {

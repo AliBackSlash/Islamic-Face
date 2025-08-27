@@ -4,6 +4,7 @@ using IslamicFace.Infrastructure.context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IslamicFace.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250827111559_Remove_field_UserType_from_AppUser")]
+    partial class Remove_field_UserType_from_AppUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -2215,7 +2218,7 @@ namespace IslamicFace.Infrastructure.Migrations
 
                     b.Property<string>("bio")
                         .HasMaxLength(160)
-                        .HasColumnType("NVARCHAR");
+                        .HasColumnType("VARCHAR");
 
                     b.Property<int?>("cityID")
                         .HasColumnType("Int");
@@ -2226,10 +2229,6 @@ namespace IslamicFace.Infrastructure.Migrations
                     b.Property<DateOnly?>("dateOfBirth")
                         .HasColumnType("Date");
 
-                    b.Property<string>("fName")
-                        .HasMaxLength(50)
-                        .HasColumnType("NVARCHAR");
-
                     b.Property<bool>("gender")
                         .HasColumnType("Bit");
 
@@ -2238,9 +2237,9 @@ namespace IslamicFace.Infrastructure.Migrations
                         .HasColumnType("DateTime")
                         .HasDefaultValueSql("GETUTCDATE()");
 
-                    b.Property<string>("lName")
-                        .HasMaxLength(50)
-                        .HasColumnType("NVARCHAR");
+                    b.Property<string>("name")
+                        .HasMaxLength(40)
+                        .HasColumnType("VARCHAR");
 
                     b.Property<string>("profilePictureURL")
                         .HasMaxLength(2083)
