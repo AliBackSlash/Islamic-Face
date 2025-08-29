@@ -6,13 +6,14 @@ public class AppUser : IdentityUser<Guid>
 {
 
     public string? fName { get; set; }
-    public string? lName { get; internal set; }
+    public string? lName { get; set; }
     public short? countryID { get; set; }
     public short? cityID { get; set; }
     public DateOnly? dateOfBirth { get; set; }
     public DateTime joinDate { get; set; }
-    public bool gender { get; set; }
+    public Gender gender { get; set; }
     public string? profilePictureURL { get; set; }
+    public string? profileCoverURL { get; set; }
     public  string? bio {  get; set; }
     public byte? settingId { get; set; }
     public Country? Country { get; set; }

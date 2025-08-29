@@ -1,8 +1,6 @@
-﻿
+﻿using Microsoft.AspNetCore.Identity;
 
-using Microsoft.AspNetCore.Identity;
-
-namespace IslamicFace.Infrastructure.context
+namespace IslamicFace.Infrastructure.EFCore.context
 {
     public class AppDbContext : IdentityDbContext<AppUser,IdentityRole<Guid>,Guid>
     {

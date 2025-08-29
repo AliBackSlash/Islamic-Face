@@ -1,4 +1,5 @@
 ﻿using IslamicFace.Domain.Entities;
+using IslamicFace.Domain.StaticFilesHelpersClasses;
 using static IslamicFace.Domain.ErrorHandleClasses.ErrorCodes;
 
 namespace IslamicFace.Infrastructure.Services.IdentityServices;
@@ -73,7 +74,7 @@ public class AppUserService(UserManager<AppUser> _userManager, JWT _jwt) : IAppU
 
         return Task.FromResult((email, userName, roles, expiration));
     }
-    private Result<string> _GetUserIdFromToken(string token)
+    public Result<string> GetUserIdFromToken(string token)
     {
         try
         {
@@ -93,7 +94,6 @@ public class AppUserService(UserManager<AppUser> _userManager, JWT _jwt) : IAppU
             return Result.Failure<string>(new Error("Invalid Token", $"Message: {ex}", ErrorType.Validation));
         }
     }
-   
     public async Task<Result<LoginResponseDto>> LoginAsync(LoginDto dto, CancellationToken cancellationToken)
     {
         var user = await _userManager.FindByEmailAsync(dto.UserNameOrEmail)
@@ -117,11 +117,13 @@ public class AppUserService(UserManager<AppUser> _userManager, JWT _jwt) : IAppU
         return Result.Failure<LoginResponseDto>(
             new Error("User.InvalidCredentials", "Invalid username or password", ErrorType.Unauthorized));
     }
-    public async Task<Result<UpdateTheRestOfTheUser_DataResponseDto>> UpdateTheRestOfTheUser_DataAsync(AddTheRestOfTheUser_DataForUserDto dto)
+    public async Task<Result<UpdateUserInfoResponseDto>> UpdateUserInfoAsync(UpdateUserInfoForUserDto dto)
     {
         AppUser? user = await _userManager.FindByIdAsync(dto.Id);
         if (user is null)
-            return Result.Failure<UpdateTheRestOfTheUser_DataResponseDto>(Error.NotFound("Not Found", $"User with id {dto.Id} not found"));
+            return Result.Failure<UpdateUserInfoResponseDto>(Error.NotFound("Not Found", $"User with id {dto.Id} not found"));
+
+       
 
         user.fName = dto.fName;
         user.lName = dto.lName;
@@ -129,18 +131,17 @@ public class AppUserService(UserManager<AppUser> _userManager, JWT _jwt) : IAppU
         user.cityID = dto.cityID;
         user.dateOfBirth = dto.dateOfBirth;
         user.gender = dto.gender;
-        user.profilePictureURL = dto.profilePictureURL;
         user.bio = dto.bio;
         user.settingId = dto.settingId;
         user.PhoneNumber = dto?.PhoneNumber;
         
 
-        var createResult = await _userManager.UpdateAsync(user);
-        if (!createResult.Succeeded)
-            return Result.Failure<UpdateTheRestOfTheUser_DataResponseDto>(new Error("Create Errors", string.Join(", ", createResult.Errors.Select(e => e.Description)), ErrorType.Create));
+        var updateResult = await _userManager.UpdateAsync(user);
+        if (!updateResult.Succeeded)
+            return Result.Failure<UpdateUserInfoResponseDto>(new Error("Update Errors", string.Join(", ", updateResult.Errors.Select(e => e.Description)), ErrorType.Create));
 
-        return Result.Success(new UpdateTheRestOfTheUser_DataResponseDto(user.Id, user. fName, user.lName, user.countryID, user.cityID,
-    user.dateOfBirth, user.gender, user.profilePictureURL, user.bio, user.PhoneNumber, user.settingId));
+        return Result.Success(new UpdateUserInfoResponseDto(user.Id, user. fName, user.lName, user.countryID, user.cityID,
+        user.dateOfBirth, user.gender, user.bio, user.PhoneNumber, user.settingId));
     }
     public async Task<Result<string>> ConfirmEmailAsync(string userId,string token)
     {
@@ -276,5 +277,44 @@ public class AppUserService(UserManager<AppUser> _userManager, JWT _jwt) : IAppU
         }
     }
 
+    public async Task<Result> UpdateProfileImageAsync(string userId, string path, string rootPath)
+    {
+        AppUser? user = await _userManager.FindByIdAsync(userId);
+        if (user is null)
+            return Result.Failure(Error.NotFound("Not Found", $"User with id {userId} not found"));
+
+        var deleteResult = PicturesChecker.RemoveOldPictureIfExists(Path.Combine(rootPath, user.profilePictureURL ?? "no path"));
+        if (deleteResult.IsFailure)
+            return Result.Failure(deleteResult.Errors);
+
+        user.profilePictureURL = path;
+
+        await _userManager.UpdateAsync(user);
+        var updateResult = await _userManager.UpdateAsync(user);
+        if (!updateResult.Succeeded)
+            return Result.Failure<UpdateUserInfoResponseDto>(new Error("Update Errors", string.Join(", ", updateResult.Errors.Select(e => e.Description)), ErrorType.Create));
+
+        return Result.Success();
+    }
+
+    public async Task<Result> UpdateProfileCoverAsync(string userId, string path, string rootPath)
+    {
+        AppUser? user = await _userManager.FindByIdAsync(userId);
+        if (user is null)
+            return Result.Failure(Error.NotFound("Not Found", $"User with id {userId} not found"));
+
+        var deleteResult = PicturesChecker.RemoveOldPictureIfExists(Path.Combine(rootPath , user.profileCoverURL ?? "no path"));
+        if (deleteResult.IsFailure)
+            return Result.Failure(deleteResult.Errors);
+
+        user.profileCoverURL = path;
+
+        await _userManager.UpdateAsync(user);
+        var updateResult = await _userManager.UpdateAsync(user);
+        if (!updateResult.Succeeded)
+            return Result.Failure<UpdateUserInfoResponseDto>(new Error("Update Errors", string.Join(", ", updateResult.Errors.Select(e => e.Description)), ErrorType.Create));
+
+        return Result.Success();
+    }
 }
 

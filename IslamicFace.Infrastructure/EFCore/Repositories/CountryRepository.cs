@@ -1,6 +1,6 @@
 ﻿using IslamicFace.Domain.Abstractions.IRepositories;
 using IslamicFace.Domain.Entities;
-using IslamicFace.Infrastructure.context;
+using IslamicFace.Infrastructure.EFCore.context;
 
 namespace IslamicFace.Infrastructure.EFCore.Repositories;
 

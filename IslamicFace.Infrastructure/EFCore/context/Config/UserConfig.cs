@@ -1,4 +1,6 @@
-﻿namespace IslamicFace.Infrastructure.context.Config
+﻿using IslamicFace.Domain.Enums;
+
+namespace IslamicFace.Infrastructure.context.Config
 {
     public class UserConfig : IEntityTypeConfiguration<AppUser>
     {
@@ -11,10 +13,6 @@
                   .HasColumnType("UNIQUEIDENTIFIER")
                   .HasDefaultValueSql("NEWID()")
                   .IsRequired();
-
-           
-
-           
 
             builder.Property(x => x.fName)
                 .HasColumnType("NVARCHAR")
@@ -30,6 +28,11 @@
                 .HasColumnType("VARCHAR")
                 .HasMaxLength(2083)
                 .IsRequired(false);
+
+            builder.Property(x => x.profileCoverURL)
+                .HasColumnType("VARCHAR")
+                .HasMaxLength(2083)
+                .IsRequired(false);
        
             builder.Property(x => x.cityID)
                 .HasColumnType("Int");
@@ -40,7 +43,12 @@
                 .IsRequired(false);
 
             builder.Property(x => x.gender)
-                .HasColumnType("Bit");
+                .HasColumnType("Bit")
+                .HasDefaultValue(Gender.Male)
+                .HasConversion(
+                    x => x == Gender.Male, // store as bit: true for Male, false for Female
+                    x => x ? Gender.Male : Gender.Female // read: true = Male, false = Female
+                );
 
             builder.Property(x => x.dateOfBirth)
                 .HasColumnType("Date");

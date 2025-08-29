@@ -1,5 +1,4 @@
 ﻿global using FluentValidation;
-global using IslamicFace.Infrastructure.context;
 global using IslamicFace.Presentation.API.Extensions;
 global using Microsoft.EntityFrameworkCore;
 global using IslamicFace.Domain.Abstractions.IRepositories;
@@ -12,4 +11,12 @@ global using IslamicFace.Application.Features.AuthFeature.Commands.ConfirmEmailC
 global using IslamicFace.Application.Features.AuthFeature.Commands.ResetPasswordCommand;
 global using IslamicFace.Domain.ErrorHandleClasses;
 global using IslamicFace.Presentation.API.Controllers.v1.AuthController.DTOs;
+global using IslamicFace.Domain.Enums;
 global using MediatR;
+global using IslamicFace.Application.Features.UploadFolder.UpdateProfileCoverCommand;
+global using IslamicFace.Application.Features.UploadFolder.UpdateProfileImageCommand;
+global using IslamicFace.Presentation.API.Controllers.v1.UploadsController.DTOs;
+global using IslamicFace.Presentation.API.Services;
+global using IslamicFace.Application.Features.UserFolder.ChangePasswordCommand;
+global using IslamicFace.Application.Features.UserFolder.UpdateUserInfoCommand;
+global using IslamicFace.Presentation.API.Controllers.v1.UserController.DTOs;

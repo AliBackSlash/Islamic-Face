@@ -7,3 +7,4 @@ global using System.Reflection;
 global using IslamicFace.Application.Abstractions.IServices.IdentityServices;
 global using IslamicFace.Application.Features.AuthFeature.Commands.RegisterCommand;
 global using IslamicFace.Domain.Abstractions.IServices;
+global using IslamicFace.Domain.Enums;

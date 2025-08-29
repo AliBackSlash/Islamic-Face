@@ -1,4 +1,6 @@
 ﻿
+using IslamicFace.Domain.Pagination;
+
 namespace IslamicFace.Domain.Abstractions.IRepositories;
 
 public interface IBasRepository<TEntity, IdType> where TEntity : class

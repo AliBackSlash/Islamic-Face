@@ -1,8 +1,8 @@
-﻿namespace IslamicFace.Application.Features.UserFolder.AddTheRestOfTheUser_DataCommand;
+﻿namespace IslamicFace.Application.Features.UserFolder.UpdateUserInfoCommand;
 
-public class AddTheRestOfTheUser_DataCommandValidator : AbstractValidator<AddTheRestOfTheUser_DataCommand>
+public class UpdateUserInfoCommandValidator : AbstractValidator<UpdateUserInfoCommand>
 {
-    public AddTheRestOfTheUser_DataCommandValidator()
+    public UpdateUserInfoCommandValidator()
     {
         RuleFor(x => x.fName)
             .NotEmpty().WithMessage("First Name is required.")

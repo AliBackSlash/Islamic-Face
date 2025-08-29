@@ -1,19 +1,14 @@
 ﻿
 
+using IslamicFace.Domain.Pagination;
+using IslamicFace.Infrastructure.EFCore.context;
 using System.Threading;
 
 namespace IslamicFace.Infrastructure.EFCore.Repositories;
 
-public class BasRepository<TEntity, IdType> : IBasRepository<TEntity, IdType> where TEntity : class
+public class BasRepository<TEntity, IdType>(AppDbContext _context) : IBasRepository<TEntity, IdType> where TEntity : class
 {
-    private readonly AppDbContext _context;
-    private readonly DbSet<TEntity> _dbSet;
-
-    public BasRepository(AppDbContext context)
-    {
-        _context = context;
-        _dbSet = context.Set<TEntity>();
-    }
+    private readonly DbSet<TEntity> _dbSet = _context.Set<TEntity>();
 
     public async Task<TEntity?> GetByIdAsync(IdType id, CancellationToken cancellationToken) => await _dbSet.FindAsync(id, cancellationToken);
     public async Task<IEnumerable<TEntity>> GetAllAsync(CancellationToken cancellationToken) => await _dbSet.ToListAsync(cancellationToken);
@@ -56,4 +51,6 @@ public class BasRepository<TEntity, IdType> : IBasRepository<TEntity, IdType> wh
             PageSize = paginationParams.PageSize
         };
     }
+
+   
 }

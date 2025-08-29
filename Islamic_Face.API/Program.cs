@@ -1,6 +1,8 @@
 #region Initialize builder
 
 
+using IslamicFace.Domain.StaticFilesHelpersClasses;
+using IslamicFace.Infrastructure.EFCore.context;
 using IslamicFace.Presentation.API.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -37,7 +39,8 @@ builder.Services.AddDbContext<AppDbContext>(bl => bl.UseSqlServer(
 
 #endregion
 builder.Services.AddHttpContextAccessor();
-
+builder.Services.Configure<StaticFilesSettings>(
+    builder.Configuration.GetSection("StaticFilesSettings"));
 #region Configer JWT Bearer
 var JWTValues = builder.Configuration.GetSection("JWT").Get<JWT>();
 builder.Services.AddSingleton(JWTValues);
