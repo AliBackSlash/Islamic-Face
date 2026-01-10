@@ -6,6 +6,5 @@ namespace IslamicFace.Domain.Entities
     {
         public byte Id { get; set; }
         public GenderOfFriends GenderOfFriends { get; set; }
-        public User? User { get; set; }
     }
 }

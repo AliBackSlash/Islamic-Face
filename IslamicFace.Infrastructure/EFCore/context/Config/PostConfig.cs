@@ -1,0 +1,60 @@
+﻿using IslamicFace.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+
+namespace IslamicFace.Infrastructure.context.Config
+{
+    public class PostConfig : IEntityTypeConfiguration<Post>
+    {
+        public void Configure(EntityTypeBuilder<Post> builder)
+        {
+            builder.ToTable("Posts");
+            builder.HasKey(x => x.Id);
+
+            builder.Property(x => x.Id)
+                  .HasColumnType("UNIQUEIDENTIFIER")
+                  .HasDefaultValueSql("NEWID()")
+                  .IsRequired();
+
+            builder.Property(x => x.postText)
+                .HasColumnType("VARCHAR")
+                .HasMaxLength(500)
+                .IsRequired();
+           
+            builder.Property(x => x.userId)
+                .HasColumnType("UNIQUEIDENTIFIER")
+                  .IsRequired();
+
+            builder.Property(x => x.createdAt)
+                .HasColumnType("DateTime")
+                .HasDefaultValueSql("GETUTCDATE()")
+                .IsRequired();
+
+            ////One  to Many
+            ////Post => PostComments
+            builder.HasMany(x => x.PostComments)
+                .WithOne(x => x.Post)
+                .HasForeignKey(x => x.postId);
+
+            //One  to Many
+            //Post => PostMedias
+            builder.HasMany(x => x.PostMedias)
+                .WithOne(x => x.Post)
+                .HasForeignKey(x => x.postId);
+
+            //One  to Many
+            //Post => PostReactions
+            builder.HasMany(x => x.PostReactions)
+                .WithOne(x => x.Post)
+                .HasForeignKey(x => x.postId);
+
+            //One  to Many
+            //Post => PostTags
+            builder.HasMany(x => x.PostTags)
+                .WithOne(x => x.Post)
+                .HasForeignKey(x => x.postId);
+
+        }
+    }
+}

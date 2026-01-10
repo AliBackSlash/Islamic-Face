@@ -1,0 +1,10 @@
+﻿global using FluentValidation;
+global using FluentValidation.Results;
+global using IslamicFace.Application.Messaging;
+global using IslamicFace.Domain.ErrorHandleClasses;
+global using MediatR;
+global using System.Reflection;
+global using IslamicFace.Application.Abstractions.IServices.IdentityServices;
+global using IslamicFace.Application.Features.AuthFeature.Commands.RegisterCommand;
+global using IslamicFace.Domain.Abstractions.IServices;
+global using IslamicFace.Domain.Enums;

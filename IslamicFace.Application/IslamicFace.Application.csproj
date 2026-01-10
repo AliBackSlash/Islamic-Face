@@ -11,13 +11,24 @@
     <PackageReference Include="MediatR" Version="13.0.0" />
   </ItemGroup>
 
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<NoWarn>$(NoWarn);1591</NoWarn>
+	</PropertyGroup>
+
+ 
+
   <ItemGroup>
     <ProjectReference Include="..\IslamicFace.Domain\IslamicFace.Domain.csproj" />
   </ItemGroup>
 
+ 
+
   <ItemGroup>
-    <Folder Include="Abstractions\IServices\" />
-    <Folder Include="Features\" />
+    <Folder Include="Features\AuthFeature\Queries\" />
+    <Folder Include="Features\AdminFolder\" />
+    <Folder Include="Features\RootAdminFolder\" />
   </ItemGroup>
 
 </Project>

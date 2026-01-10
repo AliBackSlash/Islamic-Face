@@ -4,8 +4,8 @@ namespace IslamicFace.Domain.Entities
 {
     public class PostMedia
     {
-        public int  Id { get; set; }
-        public decimal postId { get; set; }
+        public decimal  Id { get; set; }
+        public Guid postId { get; set; }
         public MediaType mediaType { get; set; }
         public string? mediaURL { get; set; }
 

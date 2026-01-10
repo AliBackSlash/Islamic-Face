@@ -3,8 +3,14 @@
 public enum ErrorType
 {
     Failure = 0,
-    Validation = 1,
-    Problem = 2,
-    NotFound = 3,
-    Conflict = 4
+    Validation,
+    Problem ,
+    ConfirmEmailError,
+    Delete,
+    Create,
+    InternalServer = 500,
+    BadRequest = 400,
+    NotFound = 404,
+    Conflict = 409,
+    Unauthorized = 401,
 }

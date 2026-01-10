@@ -19,19 +19,19 @@ public class Error
     public string Description { get; }
 
     public ErrorType Type { get; }
+    public bool IsInternalError => Type == ErrorType.InternalServer;
 
-    public static Error Failure(string code, string description) =>
-        new(code, description, ErrorType.Failure);
+    public static Error InternalServer(string code, string description) =>
+            new(code, description, ErrorType.InternalServer);
 
     public static Error NotFound(string code, string description) =>
         new(code, description, ErrorType.NotFound);
 
-    public static Error Problem(string code, string description) =>
-        new(code, description, ErrorType.Problem);
-
     public static Error Conflict(string code, string description) =>
         new(code, description, ErrorType.Conflict);
 
-    public static Error Validation(string code, string description) =>
-    new(code, description, ErrorType.Validation);
+    public static Error BadRequest(string code, string description) =>
+    new(code, description, ErrorType.BadRequest);
+    public static Error Unauthorized(string code, string description) =>
+        new(code, description, ErrorType.Unauthorized);
 }
